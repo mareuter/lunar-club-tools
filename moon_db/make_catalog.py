@@ -8,7 +8,7 @@ r = shapefile.Reader("MOON_nomenclature.shp")
 
 ofile = open("initial_cat.txt", "w+")
 for sr in r.shapeRecords():
-	vals = (str(0), sr.record[0], str(sr.record[5]), str(sr.record[6]), sr.record[7])
+	vals = (str(0), sr.record[0], sr.record[7])
 	ofile.write("\t".join(vals)+"\n")
 	
 ofile.close()

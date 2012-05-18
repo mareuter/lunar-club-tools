@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from symbol import except_clause
 
 # This script will handle creating the actual catalog database for the 
 # Lunar information
@@ -29,12 +30,31 @@ INITIAL_CAT = "initial_cat.txt"
 OUTPUT_DB = "moon.db"
 # Lunar club codes: 1 - Lunar, 2 - Lunar II, 3 - Both
 LUNAR_CODES = (1, 2, 3)
+# Lunar club object types
+LUNAR_CLUB_TYPES = ("Naked Eye", "Binocular", "Telescopic")
 
 # Get the required list of feature from the initial catalog
 cat_file = open(INITIAL_CAT, "r")
 feature_dict = {}
 for line in cat_file:
     values = line.split('|')
-    if int(values[0]) in LUNAR_CODES:
-        feature_list[values[1]] = int(values[0])
+    code = int(values[0]) 
+    if code in LUNAR_CODES:
+        # If part of Lunar club, get object type
+        try:
+            otype = int(values[3])
+        except IndexError:
+            otype = -1
+        feature_dict[values[1]] = (code, otype)
 cat_file.close()
+
+# Create the database table for the feature information
+import sqlite3
+
+
+# Open and read through the shapefile looking for the features in 
+# the previously filled dict
+import shapefile
+r = shapefile.Reader("MOON_nomenclature.shp")
+for sr in r.shapeRecords():
+    pass

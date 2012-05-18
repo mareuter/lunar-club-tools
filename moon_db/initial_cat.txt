@@ -34,7 +34,7 @@
 0|Aliacensis|Crater, craters
 0|Almanon|Crater, craters
 0|Aloha|Crater, craters
-0|Alpetragius|Crater, craters
+2|Alpetragius|Crater, craters
 0|Alphonsus|Crater, craters
 0|Alter|Crater, craters
 0|Ameghino|Crater, craters
@@ -1006,7 +1006,7 @@
 0|Mare Anguis|Mare, maria
 0|Mare Australe|Mare, maria
 0|Mare Cognitum|Mare, maria
-0|Mare Crisium|Mare, maria
+1|Mare Crisium|Mare, maria|0
 0|Mare Fecunditatis|Mare, maria
 0|Mare Frigoris|Mare, maria
 0|Mare Humboldtianum|Mare, maria
@@ -1015,7 +1015,7 @@
 0|Mare Humorum|Mare, maria
 0|Mare Imbrium|Mare, maria
 0|Mare Ingenii|Mare, maria
-0|Mare Insularum|Mare, maria
+2|Mare Insularum|Mare, maria
 0|Mare Marginis|Mare, maria
 0|Mare Moscoviense|Mare, maria
 0|Mare Nectaris|Mare, maria
@@ -1387,7 +1387,7 @@
 0|Rima Galilaei|Rima, rimae
 0|Rima Gay Lussac|Rima, rimae
 0|Rima Gartner|Rima, rimae
-0|Rima Hadley|Rima, rimae
+2|Rima Hadley|Rima, rimae
 0|Rima Hansteen|Rima, rimae
 0|Rima Hesiodus|Rima, rimae
 0|Rima Rudolf|Rima, rimae
@@ -1598,13 +1598,13 @@
 0|Shirakatsi|Crater, craters
 0|Shoemaker|Crater, craters
 0|Short|Crater, craters
-0|Sinus Aestuum|Sinus, sinūs
+3|Sinus Aestuum|Sinus, sinūs|2
 0|Sinus Amoris|Sinus, sinūs
 0|Sinus Asperitatis|Sinus, sinūs
 0|Sinus Concordiae|Sinus, sinūs
 0|Sinus Fidei|Sinus, sinūs
 0|Sinus Honoris|Sinus, sinūs
-0|Sinus Iridum|Sinus, sinūs
+1|Sinus Iridum|Sinus, sinūs|1
 0|Sinus Lunicus|Sinus, sinūs
 0|Sinus Medii|Sinus, sinūs
 0|Strabo|Crater, craters

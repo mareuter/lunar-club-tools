@@ -72,7 +72,7 @@ for sr in r.shapeRecords():
         try:
             feature_lunar_club_type = LUNAR_CLUB_TYPES[feature_dict[feature_name][1]]
         except IndexError:
-            feature_lunar_club_type = "NULL"
+            feature_lunar_club_type = None
         
         records.append((index, feature_name, feature_dia,
                        feature_lat, feature_long, 
@@ -83,13 +83,13 @@ for sr in r.shapeRecords():
 
 # Setup SQL table
 features_table = []
-features_table.append("Id INT")
+features_table.append("Id INTEGER")
 features_table.append("Name TEXT")
-features_table.append("Diameter FLOAT")
-features_table.append("Latitude FLOAT")
-features_table.append("Longitude FLOAT")
-features_table.append("Delta_Latitude FLOAT")
-features_table.append("Delta_Longitude FLOAT")
+features_table.append("Diameter REAL")
+features_table.append("Latitude REAL")
+features_table.append("Longitude REAL")
+features_table.append("Delta_Latitude REAL")
+features_table.append("Delta_Longitude REAL")
 features_table.append("Type TEXT")
 features_table.append("Quad_Name TEXT")
 features_table.append("Quad_Code TEXT")

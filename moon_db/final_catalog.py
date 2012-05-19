@@ -54,7 +54,6 @@ cat_file.close()
 import shapefile
 import math
 records = []
-index = 1
 r = shapefile.Reader(SHAPEFILE_NAME)
 for sr in r.shapeRecords():
     feature_name = sr.record[CLEAN_NAME]
@@ -74,16 +73,15 @@ for sr in r.shapeRecords():
         except IndexError:
             feature_lunar_club_type = None
         
-        records.append((index, feature_name, feature_dia,
+        records.append((feature_name, feature_dia,
                        feature_lat, feature_long, 
                        feature_delta_lat, feature_delta_long,
                        feature_type, feature_quad_name, feature_quad_code,
                        feature_lunar_code, feature_lunar_club_type))
-        index += 1 
 
 # Setup SQL table
 features_table = []
-features_table.append("Id INTEGER")
+features_table.append("Id INTEGER PRIMARY KEY")
 features_table.append("Name TEXT")
 features_table.append("Diameter REAL")
 features_table.append("Latitude REAL")
@@ -104,5 +102,5 @@ with con:
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS Features")
     cur.execute("CREATE TABLE Features(%s)" % ",".join(features_table))
-    cur.executemany("INSERT INTO Features VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+    cur.executemany("INSERT INTO Features VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
                     records)

@@ -8,9 +8,6 @@ public class MoonInfoActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-        TextView textview = new TextView(this);
-        textview.setText("This is the Moon Info tab");
-        setContentView(textview);
+		setContentView(R.layout.mooninfo);
 	}
 }

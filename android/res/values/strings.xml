@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LunarClubTools</string>
+    <string name="date_label_text">Current Date:</string>
+    <string name="time_label_text">Current Time:</string>
 </resources>

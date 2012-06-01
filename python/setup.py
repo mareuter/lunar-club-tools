@@ -10,9 +10,9 @@ import glob
 import os
 import stat
 
-PACKAGE = 'pwc'
-MAJOR = 1
-MINOR = 0
+PACKAGE = 'lct'
+MAJOR = 0
+MINOR = 1
 PATCH = 0
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, PATCH)
 
@@ -66,16 +66,18 @@ class build_qt(Command):
 
     def run(self):
         # Make resources
-        qtr = "resources.qrc"
+        """
+        qtr = "res/resources.qrc"
         pyqtr = "%s/info/qrc_resources.py" % PACKAGE
         if isNewer(qtr, pyqtr):
             pyrcc_cmd = "pyrcc4 -o %s %s" % (pyqtr, qtr)
             print pyrcc_cmd
             exec_cmd(pyrcc_cmd)
-
+        """
         # Make dialogs
-        idir = 'ui'
-        ddir = os.path.join(PACKAGE, idir)
+        uidir = 'ui'
+        idir = os.path.join('res', uidir)
+        ddir = os.path.join(PACKAGE, uidir)
         import dircache
         uifiles = [f for f in dircache.listdir(idir) if f.endswith('.ui')]
         for uifile in uifiles:
@@ -96,17 +98,17 @@ if __name__ == "__main__":
     write_version()
     setup(name = PACKAGE,
           version = VERSION,
-          description = 'Planet Weight Calculator',
+          description = 'Lunar Club Tools',
           license = 'MIT Academic',
           cmdclass = {'install_data': smart_install_data,
                       'build_qt': build_qt},
-          data_files = [ ('pwc/ui', glob.glob('%s/ui/*.ui' % PACKAGE)),
-                        ('pwc/images', glob.glob('images/*.svg')) ],
+          data_files = [ ('lct/ui', glob.glob('%s/ui/*.ui' % PACKAGE)),
+                        ('lct/images', glob.glob('images/*.svg')) ],
                           #('dgspowder/images', glob.glob('images/*.png')+
-          package_dir = {'pwc': 'pwc',
-                         'pwc.ui': 'pwc/ui',
-                         'pwc.info': 'pwc/info'},
-          packages = ['pwc',
-                      'pwc.ui',
-                      'pwc.info'],
-          scripts = ['bin/planet_weight_calc.py'])
+          package_dir = {'lct': 'lct',
+                         'lct.ui': 'lct/ui',
+                         'lct.info': 'lct/info'},
+          packages = ['lct',
+                      'lct.ui',
+                      'lct.info'])
+          #scripts = ['bin/planet_weight_calc.py'])

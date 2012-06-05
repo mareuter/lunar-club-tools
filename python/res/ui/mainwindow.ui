@@ -20,7 +20,7 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="moonInfoTab">
+      <widget class="MoonInfoTab" name="moonInfoTab">
        <attribute name="title">
         <string>Moon Info</string>
        </attribute>
@@ -46,6 +46,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MoonInfoTab</class>
+   <extends>QWidget</extends>
+   <header>widgets</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

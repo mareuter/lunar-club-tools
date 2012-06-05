@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="moon.db">db/moon.db</file>
+  </qresource>
+</RCC>

@@ -4,9 +4,9 @@ Created on Jun 1, 2012
 @author: Michael Reuter
 '''
 from PyQt4 import QtGui
-import ui
+from ui_moon_info_tab import Ui_MoonInfoTabWidget
 
-class MoonInfoTab(QtGui.QWidget, ui.Ui_MoonInfoTabWidget):
+class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
     '''
     classdocs
     '''

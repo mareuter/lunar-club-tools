@@ -64,31 +64,34 @@ class build_qt(Command):
     def finalize_options(self):
         pass
 
-    def run(self):
-        # Make resources
-        """
-        qtr = "res/resources.qrc"
-        pyqtr = "%s/info/qrc_resources.py" % PACKAGE
-        if isNewer(qtr, pyqtr):
-            pyrcc_cmd = "pyrcc4 -o %s %s" % (pyqtr, qtr)
-            print pyrcc_cmd
-            exec_cmd(pyrcc_cmd)
-        """
-        # Make dialogs
-        uidir = 'ui'
-        idir = os.path.join('res', uidir)
-        ddir = os.path.join(PACKAGE, uidir)
+    def _make_ui(self, idir, odir):
         import dircache
         uifiles = [f for f in dircache.listdir(idir) if f.endswith('.ui')]
         for uifile in uifiles:
             pyuifile = "ui_"+uifile.split('.')[0]+".py"
             uifile = os.path.join(idir, uifile)
-            pyuifile = os.path.join(ddir, pyuifile)
+            pyuifile = os.path.join(odir, pyuifile)
             if isNewer(uifile, pyuifile): 
                 pyuic_cmd = "pyuic4 -o %s %s" % (pyuifile, uifile)
                 print pyuic_cmd
                 exec_cmd(pyuic_cmd)
 
+    def run(self):
+        # Make resources
+        qtr = "res/resources.qrc"
+        pyqtr = "%s/ui/qrc_resources.py" % PACKAGE
+        if isNewer(qtr, pyqtr):
+            pyrcc_cmd = "pyrcc4 -o %s %s" % (pyqtr, qtr)
+            print pyrcc_cmd
+            exec_cmd(pyrcc_cmd)
+            
+        # Make dialogs
+        udirs = ('ui', os.path.join('ui','widgets'))
+        for udir in udirs:
+            indir = os.path.join('res', udir)
+            outdir = os.path.join(PACKAGE, udir)
+            self._make_ui(indir, outdir)
+        
 old_cmds = distutils.command.build.build.sub_commands
 new_cmds = [('build_qt', None)]
 new_cmds.extend([x for x in old_cmds])

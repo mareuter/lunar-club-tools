@@ -3,6 +3,7 @@ Created on Jun 1, 2012
 @author: Michael Reuter
 '''
 import ephem
+import os
 import time
 
 class ObservingSite(object):
@@ -20,11 +21,18 @@ class ObservingSite(object):
         Constructor
         '''
         curtime = time.time()
-        datetime = ephem.Date(time.gmtime(curtime)[:-3])
+        obdatetime = ephem.Date(time.gmtime(curtime)[:-3])
         self._observer = ephem.Observer()
-        self._observer.date = datetime
+        self._observer.date = obdatetime
         self._observer.lat = self.toCoordString("lat")
         self._observer.long = self.toCoordString("long")
+    
+    def __str__(self):
+        result = []
+        result.append("Latitude: %s" % self.toCoordString("lat"))
+        result.append("Longitude: %s" % self.toCoordString("long"))
+        result.append("DateTime: %s" % self.getDateTime())
+        return os.linesep.join(result)
     
     def _tupleToString(self, coordinate):
         return ":".join([str(x) for x in coordinate])
@@ -38,11 +46,12 @@ class ObservingSite(object):
     
     def getDateTime(self):
         return self._observer.date
+    
+    def getObserver(self):
+        return self._observer
         
 if __name__ == "__main__":
     obs = ObservingSite()
-    print "Latitude:", obs.toCoordString("lat") 
-    print "Longitude:", obs.toCoordString("long")
-    print "DateTime:", obs.getDateTime()
+    print obs
     
     

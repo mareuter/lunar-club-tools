@@ -37,6 +37,21 @@ class ObservingSite(object):
     def _tupleToString(self, coordinate):
         return ":".join([str(x) for x in coordinate])
     
+    def _tupleToDmsString(self, coord_type):
+        dir_str = ""
+        coord = getattr(self, "_"+coord_type+"itude")
+        if coord_type == "lat":
+            if coord[0] < 0:
+                dir_str = "S"
+            else:
+                dir_str = "N"
+        if coord_type == "long":
+            if coord[0] < 0:
+                dir_str = "W"
+            else:
+                dir_str = "E"
+        return str(coord[0])+"* "+str(coord[1])+"\' "+ str(coord[2])+"\" "+dir_str  
+    
     def toCoordString(self, coord_type):
         coord = getattr(self, "_"+coord_type+"itude")
         return self._tupleToString(coord)
@@ -49,6 +64,12 @@ class ObservingSite(object):
     
     def getObserver(self):
         return self._observer
+    
+    def getLocationString(self):
+        result = []
+        result.append(self._tupleToDmsString("lat"))
+        result.append(self._tupleToDmsString("long"))
+        return "  ".join(result)
         
 if __name__ == "__main__":
     obs = ObservingSite()

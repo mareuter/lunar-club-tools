@@ -17,6 +17,11 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         super(LunarClubTools, self).__init__(parent)
         self.setupUi(self)
         
+        self.updateUI()
+        
+    def updateUI(self):
+        self.moonInfoTab.updateUI()
+        
 def main():
     import sys
     app = QtGui.QApplication(sys.argv)

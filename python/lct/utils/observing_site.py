@@ -60,7 +60,14 @@ class ObservingSite(object):
         return getattr(self, "_"+coord_type+"itude")
     
     def getDateTime(self):
-        return self._observer.date
+        local_time = ephem.localtime(self._observer.date)
+        return str(local_time.strftime("%Y-%m-%dT%H:%M:%S%z"))
+    
+    def getLocalDate(self):
+        return self.getDateTime().split('T')[0]
+    
+    def getLocalTime(self):
+        return self.getDateTime().split('T')[-1]
     
     def getObserver(self):
         return self._observer

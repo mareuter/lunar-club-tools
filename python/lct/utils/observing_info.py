@@ -25,6 +25,16 @@ class ObservingInfo(object):
     def update(self):
         self.moon.compute(self.obs_site.getObserver())
         
+    def moonAge(self):
+        prev_new = ephem.previous_new_moon(self.obs_site.getObserver().date)
+        return str(self.obs_site.getObserver().date - prev_new)
+        
+    def moonColong(self):
+        return str(self.moon.colong)
+    
+    def moonPhase(self):
+        return str(self.moon.phase)
+        
 if __name__ == "__main__":
     oi = ObservingInfo()
     oi.update()

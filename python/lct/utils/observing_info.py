@@ -4,6 +4,7 @@ Created on Jun 7, 2012
 @author: Michael Reuter
 '''
 import ephem
+import utils
 from observing_site import ObservingSite
 
 class ObservingInfo(object):
@@ -27,13 +28,14 @@ class ObservingInfo(object):
         
     def moonAge(self):
         prev_new = ephem.previous_new_moon(self.obs_site.getObserver().date)
-        return str(self.obs_site.getObserver().date - prev_new)
+        age = self.obs_site.getObserver().date - prev_new
+        return utils.StrFmt.float_string(age, 2)
         
     def moonColong(self):
         return str(self.moon.colong)
     
     def moonPhase(self):
-        return str(self.moon.phase)
+        return utils.StrFmt.float_string(self.moon.phase, 2)
         
 if __name__ == "__main__":
     oi = ObservingInfo()

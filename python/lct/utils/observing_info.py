@@ -29,14 +29,14 @@ class ObservingInfo(object):
     def moonAge(self):
         prev_new = ephem.previous_new_moon(self.obs_site.getObserver().date)
         age = self.obs_site.getObserver().date - prev_new
-        return utils.StrFmt.float_string(age, 2)
+        return utils.StrFmt.floatString(age, 2)
         
     def moonColong(self):
         return str(self.moon.colong)
     
     def moonPhase(self):
         phase_fraction = self.moon.phase / 100.0
-        return utils.StrFmt.float_string(phase_fraction, 2)
+        return utils.StrFmt.floatString(phase_fraction, 2)
         
 if __name__ == "__main__":
     oi = ObservingInfo()

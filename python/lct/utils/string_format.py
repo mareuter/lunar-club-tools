@@ -16,7 +16,7 @@ class StrFmt(object):
         pass
     
     @classmethod
-    def float_string(cls, ifloat, precision):
+    def floatString(cls, ifloat, precision):
         """
         This function prints a float as a string with a given precision.
         """

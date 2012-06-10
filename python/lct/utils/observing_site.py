@@ -50,7 +50,8 @@ class ObservingSite(object):
                 dir_str = "W"
             else:
                 dir_str = "E"
-        return str(coord[0])+u'\u00b0 '+str(coord[1])+"\' "+ str(coord[2])+"\" "+dir_str  
+        import math
+        return str(int(math.fabs(coord[0])))+u'\u00b0 '+str(coord[1])+"\' "+ str(coord[2])+"\" "+dir_str  
     
     def toCoordString(self, coord_type):
         coord = getattr(self, "_"+coord_type+"itude")

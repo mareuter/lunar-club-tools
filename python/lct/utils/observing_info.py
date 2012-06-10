@@ -35,7 +35,8 @@ class ObservingInfo(object):
         return str(self.moon.colong)
     
     def moonPhase(self):
-        return utils.StrFmt.float_string(self.moon.phase, 2)
+        phase_fraction = self.moon.phase / 100.0
+        return utils.StrFmt.float_string(phase_fraction, 2)
         
 if __name__ == "__main__":
     oi = ObservingInfo()

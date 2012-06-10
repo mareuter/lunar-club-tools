@@ -18,14 +18,14 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="MoonInfoTab" name="moonInfoTab">
        <attribute name="title">
         <string>Moon Info</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="featuresTab">
+      <widget class="FeaturesTab" name="featuresTab">
        <attribute name="title">
         <string>Features</string>
        </attribute>
@@ -49,6 +49,12 @@
  <customwidgets>
   <customwidget>
    <class>MoonInfoTab</class>
+   <extends>QWidget</extends>
+   <header>widgets</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FeaturesTab</class>
    <extends>QWidget</extends>
    <header>widgets</header>
    <container>1</container>

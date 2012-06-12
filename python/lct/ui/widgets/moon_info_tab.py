@@ -18,8 +18,6 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         '''
         super(MoonInfoTab, self).__init__(parent)
         self.setupUi(self)
-        self.moon_phase_edit.setValidator(QtGui.QDoubleValidator())
-        self.moon_colong_edit.setValidator(QtGui.QDoubleValidator())
         
     def updateUI(self):
         obsinfo = utils.ObservingInfo()

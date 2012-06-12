@@ -19,51 +19,43 @@
      <item>
       <widget class="QLabel" name="obs_date_label">
        <property name="text">
-        <string>Observation Date</string>
+        <string>Observation Date:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="obs_date_edit">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maxLength">
-        <number>12</number>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="obs_date_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="obs_time_label">
        <property name="text">
-        <string>Observation Time</string>
+        <string>Observation Time:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="obs_time_edit">
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="obs_time_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -72,14 +64,14 @@
      <item>
       <widget class="QLabel" name="location_label">
        <property name="text">
-        <string>Location</string>
+        <string>Location:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="location_edit">
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="location_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -103,14 +95,14 @@
      <item>
       <widget class="QLabel" name="moon_phase_label">
        <property name="text">
-        <string>Moon Phase</string>
+        <string>Moon Phase:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="moon_phase_edit">
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="moon_phase_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -134,14 +126,14 @@
      <item>
       <widget class="QLabel" name="moon_colong_label">
        <property name="text">
-        <string>Moon Colongitude</string>
+        <string>Moon Colongitude:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="moon_colong_edit">
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="moon_colong_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -165,14 +157,14 @@
      <item>
       <widget class="QLabel" name="moon_age_label">
        <property name="text">
-        <string>Moon Age</string>
+        <string>Moon Age:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="moon_age_edit">
-       <property name="readOnly">
-        <bool>true</bool>
+      <widget class="QLabel" name="moon_age_edit">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

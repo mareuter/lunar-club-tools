@@ -28,7 +28,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.features1.load()
         self.lunar_club_tree.clear()
         self.lunar_club_tree.setColumnCount(2)
-        self.lunar_club_tree.setHeaderLabels("Target/Type/Name", "Latitude")
+        self.lunar_club_tree.setHeaderLabels(["Target/Type/Name", "Latitude"])
         self.lunar_club_tree.setItemsExpandable(True)
         parentFromTarget = {}
         parentFromType = {}

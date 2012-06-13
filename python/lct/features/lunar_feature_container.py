@@ -4,9 +4,7 @@ Created on Jun 11, 2012
 @author: Michael Reuter
 '''
 import sqlite3
-from PyQt4 import QtXml
 from lunar_feature import LunarFeature
-from ui.qrc_resources import *
 import utils
 
 ID, NAME, DIAMETER, LATITUDE, LONGITUDE, D_LAT, D_LONG, TYPE, QUAD_NAME, \
@@ -18,19 +16,11 @@ class LunarClubFeatureContainer(object):
     feature information.
     '''
 
-    def __init__(self):
+    def __init__(self, dbname="lct/db/moon.db"):
         '''
         Constructor
         '''
-        # Prototype of XML feature DB that seems to work in program mode.
-        fh = QtCore.QFile(QtCore.QString(":/moon.xml"))
-        dom = QtXml.QDomDocument()
-        dom.setContent(fh)
-        root = dom.documentElement()
-        print "C:", root.tagName()
-        
-        # DATABASE DOES NOT WORK IN PROGRAM MODE! ONLY STANDALONE! Sigh
-        self.conn = sqlite3.connect(":/db/moon.db")
+        self.conn = sqlite3.connect(dbname)
         self.features = {}
         self.club_type = set()
         self.feature_type = set()
@@ -54,9 +44,8 @@ class LunarClubFeatureContainer(object):
                                        row[LUNAR_CLUB_TYPE])
                 self.features[id(feature)] = feature
                 self.club_type.add(row[LUNAR_CLUB_TYPE])
-                self.feature_type.add(row[TYPE])
-                
+                self.feature_type.add(row[TYPE])  
 if __name__ == "__main__":
-    lcfc = LunarClubFeatureContainer()
+    lcfc = LunarClubFeatureContainer("../db/moon.db")
     lcfc.load()
     print lcfc.features

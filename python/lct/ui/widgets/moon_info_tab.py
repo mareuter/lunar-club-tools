@@ -25,8 +25,8 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         self.obs_date_edit.setText(obsinfo.obs_site.getLocalDate())
         self.obs_time_edit.setText(obsinfo.obs_site.getLocalTime())
         self.location_edit.setText(obsinfo.obs_site.getLocationString())
-        self.moon_phase_edit.setText(obsinfo.moonPhase())
-        self.moon_colong_edit.setText(obsinfo.moonColong())
-        self.moon_age_edit.setText(obsinfo.moonAge())
+        self.moon_phase_edit.setText(obsinfo.moon_info.phase())
+        self.moon_colong_edit.setText(obsinfo.moon_info.colong())
+        self.moon_age_edit.setText(obsinfo.moon_info.age())
         
         

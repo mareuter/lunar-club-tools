@@ -5,5 +5,5 @@ Created on Jun 14, 2012
 '''
 
 CSS_MOON_INFO_LABELS = """.QLabel {
-                                font: italic;
+                                font: italic bold;
                         }"""

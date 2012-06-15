@@ -4,7 +4,6 @@ Created on Jun 13, 2012
 @author: Michael Reuter
 '''
 import ephem
-import features
 import utils
 
 class MoonInfo(object):
@@ -14,6 +13,9 @@ class MoonInfo(object):
     '''
     
     NM, FQ, FM, TQ = range(4)
+    WAXING_CRESENT, WAXING_GIBBOUS, WANING_GIBBOUS, WANING_CRESENT = range(4)
+    MORNING, EVENING = range(2)
+    FEATURE_CUTOFF = 15.0 # degrees
 
     def __init__(self):
         '''
@@ -62,12 +64,20 @@ class MoonInfo(object):
         degrees, the shadow relief makes it tough to observe. Conversely, the 
         SELCO needs to be within 15 degrees of the feature from FM to NM. 
         Features closer to the poles are visible much longer after the 15 
-        degree cutoff. Mare
-        are a special exception and once FULLY visible they are always visible.
+        degree cutoff. A 1/cos(latitude) will be applied to the cutoff. 
+        Mare are a special exception and once FULLY visible they are always 
+        visible.
         @param lfeature: The lunar feature to check for visibility
         @return: True if the feature is visible.
         '''
         return True
+    
+    def _getTimeOfDay(self):
+        colong = self._moon.colong
+        if 270.0 <= colong < 360.0 or 0.0 <= colong < 90.0:
+            return MoonInfo.MORNING
+        if 90.0 <= colong < 180.0 or 180.0 <= colong < 270.0:
+            return MoonInfo.EVENING
     
     def _getQuarter(self):
         '''

@@ -4,6 +4,7 @@ Created on Jun 13, 2012
 @author: Michael Reuter
 '''
 import ephem
+import features
 import utils
 
 class MoonInfo(object):
@@ -11,6 +12,8 @@ class MoonInfo(object):
     This class is responsible for handling all of the information and 
     calculations dealing with the Moon.
     '''
+    
+    NM, FQ, FM, TQ = range(4)
 
     def __init__(self):
         '''
@@ -50,3 +53,26 @@ class MoonInfo(object):
         '''
         phase_fraction = self._moon.phase / 100.0
         return utils.StrFmt.floatString(phase_fraction, 2)
+    
+    def isVisible(self, lfeature):
+        '''
+        This function determines if the given lunar feature is visible based 
+        on the current selenographic colongitude (SELCO). For most features 
+        near the equator, from NM to FM once the SELCO recedes about 15 
+        degrees, the shadow relief makes it tough to observe. Conversely, the 
+        SELCO needs to be within 15 degrees of the feature from FM to NM. 
+        Features closer to the poles are visible much longer after the 15 
+        degree cutoff. Mare
+        are a special exception and once FULLY visible they are always visible.
+        @param lfeature: The lunar feature to check for visibility
+        @return: True if the feature is visible.
+        '''
+        return True
+    
+    def _getQuarter(self):
+        '''
+        This function determines the current lunar quarter based on the 
+        selenographic colongitude.
+        @return: The current lunar quarter.
+        '''
+        return MoonInfo.NM

@@ -12,8 +12,11 @@ class MoonInfo(object):
     calculations dealing with the Moon.
     '''
     
-    NM, FQ, FM, TQ = range(4)
-    WAXING_CRESENT, WAXING_GIBBOUS, WANING_GIBBOUS, WANING_CRESENT = range(4)
+    NM, WAXING_CRESENT, FQ, WAXING_GIBBOUS, FM, WANING_GIBBOUS, TQ, \
+    WANING_CRESENT = range(8)
+    PHASE_NAMES = ("New Moon", "Waxing Cresent", "First Quarter", 
+                   "Waxing Gibbous", "Full Moon", "Waning Gibbous",
+                   "Third Quarter", "Waning Cresent")
     MORNING, EVENING = range(2)
     FEATURE_CUTOFF = 15.0 # degrees
 
@@ -72,17 +75,47 @@ class MoonInfo(object):
         '''
         return True
     
-    def _getTimeOfDay(self):
+    def _getPhase(self):
+        '''
+        This function returns the moon phase according to standard nomenclature.
+        @return: The moon phase as an enum value.
+        '''
         colong = self._moon.colong
-        if 270.0 <= colong < 360.0 or 0.0 <= colong < 90.0:
-            return MoonInfo.MORNING
-        if 90.0 <= colong < 180.0 or 180.0 <= colong < 270.0:
-            return MoonInfo.EVENING
+        if colong == 270.0:
+            return MoonInfo.NM
+        if 270.0 < colong < 360.0:
+            return MoonInfo.WAXING_CRESENT
+        if colong == 0.0 or colong == 360.0:
+            return MoonInfo.FQ
+        if 0.0 < colong < 90.0:
+            return MoonInfo.WAXING_GIBBOUS
+        if colong == 90.0:
+            return MoonInfo.FM
+        if 90.0 < colong < 180.0:
+            return MoonInfo.WANING_GIBBOUS
+        if colong == 180.0:
+            return MoonInfo.TQ
+        if 180.0 < colong < 270.0:
+            return MoonInfo.WANING_CRESENT
     
-    def _getQuarter(self):
+    def getPhaseAsString(self):
         '''
-        This function determines the current lunar quarter based on the 
-        selenographic colongitude.
-        @return: The current lunar quarter.
+        This function returns the phase of the moon as a string.
+        @return: The moon phase as a string.
         '''
-        return MoonInfo.NM
+        return MoonInfo.PHASE_NAMES[self._getPhase()]
+    
+    def _getTimeOfDay(self):
+        '''
+        This function determines the current time of day on the moon. In 
+        otherwords, if the sun is rising on the moon it is (morning) or if the 
+        sun is setting on the moon it is evening.
+        @return: The current time of day.
+        '''
+        phase = self._getPhase()
+        if phase in (MoonInfo.NM, MoonInfo.WAXING_CRESENT, MoonInfo.FQ,
+                     MoonInfo.WAXING_GIBBOUS):
+            return MoonInfo.MORNING
+        if phase in (MoonInfo.FM, MoonInfo.WANING_GIBBOUS, MoonInfo.TQ,
+                     MoonInfo.WANING_CRESENT):
+            return MoonInfo.EVENING

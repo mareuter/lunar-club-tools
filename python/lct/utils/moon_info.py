@@ -73,7 +73,29 @@ class MoonInfo(object):
         @param lfeature: The lunar feature to check for visibility
         @return: True if the feature is visible.
         '''
-        return True
+        selco_longitude = self._colongToLong(self._moon.colong)
+        cur_tod = self._getTimeOfDay()
+        min_long = lfeature.longitude - lfeature.delta_longitude
+        max_long = lfeature.longitude + lfeature.delta_longitude
+        
+        is_visible = False
+        import math
+        latitude_scaling = math.cos(math.radians(math.fabs(lfeature.latitude)))
+        cutoff = MoonInfo.FEATURE_CUTOFF / latitude_scaling
+        
+        if cur_tod == MoonInfo.MORNING:
+            if lfeature.feature_type == "Mare":
+                is_visible = selco_longitude >= max_long
+            else:
+                is_visible = selco_longitude >= max_long + cutoff
+            
+        if cur_tod == MoonInfo.EVENING:
+            if lfeature.feature_type == "Mare":
+                is_visible = selco_longitude <= min_long
+            else:
+                is_visible = selco_longitude <= min_long - cutoff
+            
+        return is_visible
     
     def _getPhase(self):
         '''
@@ -119,3 +141,20 @@ class MoonInfo(object):
         if phase in (MoonInfo.FM, MoonInfo.WANING_GIBBOUS, MoonInfo.TQ,
                      MoonInfo.WANING_CRESENT):
             return MoonInfo.EVENING
+        
+    def _colongToLong(self, colong):
+        '''
+        This function calculates the conversion between the selenographic  
+        colongitude and actual lunar longitude.
+        @param colong: The selenographic colongitude
+        @return: The lunar longitude for the given selenographic colongitude
+        '''
+        cur_phase = self._getPhase()
+        if cur_phase in (MoonInfo.NM, MoonInfo.WAXING_CRESENT):
+            return 360.0 - colong
+        if cur_phase in (MoonInfo.FQ, MoonInfo.WAXING_GIBBOUS):
+            return colong
+        if cur_phase in (MoonInfo.FM, MoonInfo.WANING_GIBBOUS):
+            return 180.0 - colong
+        if cur_phase in (MoonInfo.TQ, MoonInfo.WANING_CRESENT):
+            return colong - 180.0

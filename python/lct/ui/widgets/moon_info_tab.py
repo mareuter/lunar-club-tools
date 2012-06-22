@@ -9,7 +9,7 @@ import utils
 
 class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
     '''
-    classdocs
+    This class handles displaying common information about the Moon.
     '''
 
     def __init__(self, parent=None):
@@ -23,6 +23,10 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
                       self.moon_colong_label, self.moon_phase_label)
         
     def updateUI(self):
+        '''
+        This function is responsible for updating the GUI widgets with the 
+        current Moon information from the current observation time.
+        '''
         obsinfo = utils.ObservingInfo()
         obsinfo.update()
         self.obs_date_edit.setText(obsinfo.obs_site.getLocalDate())
@@ -33,6 +37,10 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         self.moon_age_edit.setText(obsinfo.moon_info.age())
         
     def _set_css(self, *args):
+        '''
+        This function sets the stylesheets for the labels.
+        @param args: The set of QLabels to be styled. 
+        '''
         for arg in args:
             arg.setStyleSheet(utils.CSS_MOON_INFO_LABELS)
         

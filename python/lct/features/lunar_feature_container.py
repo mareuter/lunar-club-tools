@@ -15,7 +15,7 @@ class LunarFeatureContainer(object):
     This class is responsible for gathering and distributing the lunar 
     feature information.
     '''
-    DEBUG = True
+    DEBUG = False
 
 
     def __init__(self, dbname="lct/db/moon.db"):

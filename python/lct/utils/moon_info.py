@@ -4,6 +4,7 @@ Created on Jun 13, 2012
 @author: Michael Reuter
 '''
 import ephem
+import math
 import utils
 
 class MoonInfo(object):
@@ -73,13 +74,12 @@ class MoonInfo(object):
         @param lfeature: The lunar feature to check for visibility
         @return: True if the feature is visible.
         '''
-        selco_longitude = self._colongToLong(self._moon.colong)
+        selco_longitude = self._colongToLong()
         cur_tod = self._getTimeOfDay()
-        min_long = lfeature.longitude - lfeature.delta_longitude
-        max_long = lfeature.longitude + lfeature.delta_longitude
+        min_long = lfeature.longitude - lfeature.delta_longitude/2.0
+        max_long = lfeature.longitude + lfeature.delta_longitude/2.0
         
         is_visible = False
-        import math
         latitude_scaling = math.cos(math.radians(math.fabs(lfeature.latitude)))
         cutoff = MoonInfo.FEATURE_CUTOFF / latitude_scaling
         
@@ -102,7 +102,7 @@ class MoonInfo(object):
         This function returns the moon phase according to standard nomenclature.
         @return: The moon phase as an enum value.
         '''
-        colong = self._moon.colong
+        colong = math.degrees(self._moon.colong)
         if colong == 270.0:
             return MoonInfo.NM
         if 270.0 < colong < 360.0:
@@ -142,13 +142,13 @@ class MoonInfo(object):
                      MoonInfo.WANING_CRESENT):
             return MoonInfo.EVENING
         
-    def _colongToLong(self, colong):
+    def _colongToLong(self):
         '''
         This function calculates the conversion between the selenographic  
         colongitude and actual lunar longitude.
-        @param colong: The selenographic colongitude
-        @return: The lunar longitude for the given selenographic colongitude
+        @return: The lunar longitude for the current selenographic colongitude
         '''
+        colong = math.degrees(self._moon.colong)
         cur_phase = self._getPhase()
         if cur_phase in (MoonInfo.NM, MoonInfo.WAXING_CRESENT):
             return 360.0 - colong

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>310</width>
     <height>143</height>
    </rect>
   </property>
@@ -30,6 +30,9 @@
    </item>
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
      <item>
       <widget class="QLabel" name="lat_label">
        <property name="text">
@@ -38,7 +41,29 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lat_deg_edit"/>
+      <widget class="QLineEdit" name="lat_deg_edit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="lat_deg_label">
@@ -58,6 +83,21 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
       </widget>
      </item>
      <item>
@@ -68,7 +108,29 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lat_sec_edit"/>
+      <widget class="QLineEdit" name="lat_sec_edit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="lat_sec_label">
@@ -103,7 +165,29 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="long_deg_edit"/>
+      <widget class="QLineEdit" name="long_deg_edit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>48</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="long_deg_label">
@@ -113,7 +197,29 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="long_min_edit"/>
+      <widget class="QLineEdit" name="long_min_edit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="long_min_label">
@@ -123,7 +229,29 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="long_sec_edit"/>
+      <widget class="QLineEdit" name="long_sec_edit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="long_sec_label">
@@ -136,12 +264,12 @@
       <widget class="QComboBox" name="long_dir_cb">
        <item>
         <property name="text">
-         <string>E</string>
+         <string>W</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>W</string>
+         <string>E</string>
         </property>
        </item>
       </widget>

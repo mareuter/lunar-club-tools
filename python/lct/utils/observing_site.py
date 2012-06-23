@@ -60,10 +60,8 @@ class ObservingSite(object):
         @param coord_type: Either lat or long
         @param coords: 3-tuple of (degrees, minutes, seconds)
         '''
-        coord = getattr(self, "_"+coord_type+"itude")
-        coord = coords
-        obs_coord = getattr(self._observer, coord_type)
-        obs_coord = self.toCoordString(coords)
+        setattr(self, "_"+coord_type+"itude", coords)
+        setattr(self._observer, coord_type, self.toCoordString(coord_type))
     
     def toCoordString(self, coord_type):
         coord = getattr(self, "_"+coord_type+"itude")

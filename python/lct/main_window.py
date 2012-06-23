@@ -27,6 +27,7 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         self.updateUI()
         
     def updateUI(self):
+        print "Updating"
         self.moonInfoTab.updateUI()
         self.featuresTab.updateUI()
         
@@ -35,6 +36,7 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         
     def openLocationConfigDialog(self):
         dialog = ui.widgets.LocationConfig()
+        self.connect(dialog, QtCore.SIGNAL("updateLocation"), self.updateUI)
         if dialog.exec_():
             dialog.setLocation()
            

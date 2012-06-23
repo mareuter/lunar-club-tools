@@ -22,18 +22,21 @@ class LocationConfig(QtGui.QDialog, Ui_LocationConfigDialog):
         
         self.buttonBox.button(QtGui.QDialogButtonBox.Ok).setEnabled(False)
         
-        # Validator for degrees
-        degval = QtGui.QIntValidator()
-        degval.setRange(0, 180)
+        # Validator for latitude degrees
+        latdegval = QtGui.QIntValidator()
+        latdegval.setRange(0, 90)
+        # Validator for longitude degrees
+        longdegval = QtGui.QIntValidator()
+        longdegval.setRange(0, 180)
         # Validator for minutes/seconds
         hexval = QtGui.QIntValidator()
         hexval.setRange(0, 60)
         
-        self.lat_deg_edit.setValidator(degval)
+        self.lat_deg_edit.setValidator(latdegval)
         self.lat_min_edit.setValidator(hexval)
         self.lat_sec_edit.setValidator(hexval)
         
-        self.long_deg_edit.setValidator(degval)
+        self.long_deg_edit.setValidator(longdegval)
         self.long_min_edit.setValidator(hexval)
         self.long_sec_edit.setValidator(hexval)
         

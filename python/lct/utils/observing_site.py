@@ -53,6 +53,18 @@ class ObservingSite(object):
         import math
         return str(int(math.fabs(coord[0])))+u'\u00b0 '+str(coord[1])+"\' "+ str(coord[2])+"\" "+dir_str  
     
+    def fromCoordTuple(self, coord_type, coords):
+        '''
+        This function sets the given named coordinate from the 3-tuple 
+        provided.
+        @param coord_type: Either lat or long
+        @param coords: 3-tuple of (degrees, minutes, seconds)
+        '''
+        coord = getattr(self, "_"+coord_type+"itude")
+        coord = coords
+        obs_coord = getattr(self._observer, coord_type)
+        obs_coord = self.toCoordString(coords)
+    
     def toCoordString(self, coord_type):
         coord = getattr(self, "_"+coord_type+"itude")
         return self._tupleToString(coord)
@@ -78,6 +90,13 @@ class ObservingSite(object):
         result.append(self._tupleToDmsString("lat"))
         result.append(self._tupleToDmsString("long"))
         return "  ".join(result)
+    
+    def setLocationName(self, name):
+        '''
+        This function sets the label name for the given observing location.
+        @param name: The text name to give the observing site.
+        '''
+        self._name = name
         
 if __name__ == "__main__":
     obs = ObservingSite()

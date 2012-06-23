@@ -48,6 +48,8 @@ class LunarFeatureContainer(object):
         record. It then fills a dictionary and a couple of sets with 
         information that tree views will need.
         '''
+        # Ensure the feature dictionary is empty
+        self.features = {}
         obs_info = utils.ObservingInfo()
         c = self.conn.cursor()
         c.execute('select * from Features')

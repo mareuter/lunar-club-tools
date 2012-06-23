@@ -18,9 +18,12 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         '''
         super(MoonInfoTab, self).__init__(parent)
         self.setupUi(self)
-        self._set_css(self.obs_date_label, self.obs_time_label,
-                      self.location_label, self.moon_age_label,
-                      self.moon_colong_label, self.moon_phase_label)
+        self._set_css_labels(self.obs_date_label, self.obs_time_label,
+                            self.location_label, self.moon_age_label,
+                            self.moon_colong_label, self.moon_phase_label)
+        self._set_css_edits(self.obs_date_edit, self.obs_time_edit,
+                            self.location_edit, self.moon_age_edit,
+                            self.moon_colong_edit, self.moon_phase_edit)
         
     def updateUI(self):
         '''
@@ -36,7 +39,7 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         self.moon_colong_edit.setText(obsinfo.moon_info.colong())
         self.moon_age_edit.setText(obsinfo.moon_info.age())
         
-    def _set_css(self, *args):
+    def _set_css_labels(self, *args):
         '''
         This function sets the stylesheets for the labels.
         @param args: The set of QLabels to be styled. 
@@ -44,4 +47,11 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         for arg in args:
             arg.setStyleSheet(utils.CSS_MOON_INFO_LABELS)
         
+    def _set_css_edits(self, *args):
+        '''
+        This function sets the stylesheets for the "lineedits".
+        @param args: The set of QLabels to be styled. 
+        '''
+        for arg in args:
+            arg.setStyleSheet(utils.CSS_MOON_INFO_EDITS)
         

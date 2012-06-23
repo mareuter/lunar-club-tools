@@ -22,11 +22,19 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.features = features.LunarFeatureContainer()
         
     def updateUI(self):
+        '''
+        This function is for handling things that need to be updated on the 
+        UI.
+        '''
         self.features.load()
         self.populateLunarClubTree()
         self.populateLunarIITree()
         
     def populateLunarClubTree(self):
+        '''
+        This function populates the features from the Lunar Club into the 
+        corresponding tree.
+        '''
         self.lunar_club_tree.clear()
         self.lunar_club_tree.setColumnCount(2)
         self.lunar_club_tree.setHeaderLabels(["Target/Type/Name", "Latitude"])
@@ -51,8 +59,14 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                         item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                         self.lunar_club_tree.expandItem(parent)
                         self.lunar_club_tree.expandItem(ancestor)
+                        self.lunar_club_tree.resizeColumnToContents(0)
+                        self.lunar_club_tree.resizeColumnToContents(1)
         
     def populateLunarIITree(self):
+        '''
+        This function populates the features from the Lunar II Club into the 
+        corresponding tree.
+        '''
         self.lunar_ii_tree.clear()
         self.lunar_ii_tree.setColumnCount(2)
         self.lunar_ii_tree.setHeaderLabels(["Type/Name", "Latitude"])
@@ -69,4 +83,6 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                                                             QtCore.QString("%L1").arg(feature.latitude)])
                     item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                     self.lunar_ii_tree.expandItem(ancestor)
+                    self.lunar_ii_tree.resizeColumnToContents(0)
+                    self.lunar_ii_tree.resizeColumnToContents(1)
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 from symbol import except_clause
 
 # This script will handle creating the actual catalog database for the 
@@ -58,9 +58,15 @@ r = shapefile.Reader(SHAPEFILE_NAME)
 for sr in r.shapeRecords():
     feature_name = sr.record[CLEAN_NAME]
     if feature_name in feature_dict:
+        print "A:", feature_name
         feature_dia = sr.record[DIAMETER]
         feature_lat = sr.record[CENTER_LAT]
-        feature_long = sr.record[CENTER_LONG]
+        long = sr.record[CENTER_LONG]
+        if 180.0 <= long < 360.0:
+            # West is negative
+            feature_long = long - 360.0
+        else:
+            feature_long = long
         feature_type = sr.record[FEATURE_TYPE].split(',')[0]
         feature_delta_lat = math.fabs(sr.record[MAX_LAT] - sr.record[MIN_LAT]) 
         feature_delta_long = math.fabs(sr.record[MAX_LONG] - sr.record[MIN_LONG])

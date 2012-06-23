@@ -62,13 +62,13 @@
 0|Apollo|Crater, craters
 0|Apollonius|Crater, craters
 0|Appleton|Crater, craters
-0|Arago|Crater, craters
+2|Arago|Crater, craters
 0|Aratus|Crater, craters
 0|Archimedes|Crater, craters
 0|Archytas|Crater, craters
 0|Argelander|Crater, craters
 0|Ariadaeus|Crater, craters
-0|Aristarchus|Crater, craters
+2|Aristarchus|Crater, craters
 0|Aristillus|Crater, craters
 0|Aristoteles|Crater, craters
 0|Arminski|Crater, craters
@@ -100,9 +100,9 @@
 0|Babcock|Crater, craters
 0|Back|Crater, craters
 0|Backlund|Crater, craters
-0|Baco|Crater, craters
+2|Baco|Crater, craters
 0|Baillaud|Crater, craters
-0|Bailly|Crater, craters
+2|Bailly|Crater, craters
 0|Baily|Crater, craters
 0|Balandin|Crater, craters
 0|Balboa|Crater, craters
@@ -125,7 +125,7 @@
 0|Bear Mountain|Landing site name
 0|Beaumont|Crater, craters
 0|Becquerel|Crater, craters
-0|Beer|Crater, craters
+2|Beer|Crater, craters
 0|Behaim|Crater, craters
 0|Beijerinck|Crater, craters
 0|Beketov|Crater, craters
@@ -216,7 +216,7 @@
 0|Buch|Crater, craters
 0|Buffon|Crater, craters
 0|Buisson|Crater, craters
-0|Bullialdus|Crater, craters
+2|Bullialdus|Crater, craters
 0|Bunsen|Crater, craters
 0|Burckhardt|Crater, craters
 0|Burnham|Crater, craters
@@ -257,7 +257,7 @@
 0|Carver|Crater, craters
 0|Casatus|Crater, craters
 0|Cassegrain|Crater, craters
-0|Cassini|Crater, craters
+2|Cassini|Crater, craters
 0|Catalan|Crater, craters
 0|Catena Abulfeda|Catena, catenae
 0|Catena Artamonov|Catena, catenae
@@ -280,13 +280,13 @@
 0|Catena Timocharis|Catena, catenae
 0|Catena Yuri|Catena, catenae
 0|Catharina|Crater, craters
-0|Cauchy|Crater, craters
+2|Cauchy|Crater, craters
 0|Cavalerius|Crater, craters
 0|Cavendish|Crater, craters
 0|Caventou|Crater, craters
 0|Cayley|Crater, craters
 0|Celsius|Crater, craters
-0|Censorinus|Crater, craters
+2|Censorinus|Crater, craters
 0|Cepheus|Crater, craters
 0|Chacornac|Crater, craters
 0|Chadwick|Crater, craters
@@ -348,7 +348,7 @@
 0|Crommelin|Crater, craters
 0|Crookes|Crater, craters
 0|Crozier|Crater, craters
-0|Cruger|Crater, craters
+2|Cruger|Crater, craters
 0|Ctesibius|Crater, craters
 0|Curie|Crater, craters
 0|Curtis|Crater, craters
@@ -437,10 +437,10 @@
 0|Dorsa Ewing|Dorsum, dorsa
 0|Dorsa Geikie|Dorsum, dorsa
 0|Dorsa Harker|Dorsum, dorsa
-0|Dorsa Lister|Dorsum, dorsa
+2|Dorsa Lister|Dorsum, dorsa
 0|Dorsa Mawson|Dorsum, dorsa
 0|Dorsa Rubey|Dorsum, dorsa
-0|Dorsa Smirnov|Dorsum, dorsa
+2|Dorsa Smirnov|Dorsum, dorsa
 0|Dorsa Sorby|Dorsum, dorsa
 0|Dorsa Stille|Dorsum, dorsa
 0|Dorsa Tetyaev|Dorsum, dorsa
@@ -539,7 +539,7 @@
 0|Fernelius|Crater, craters
 0|Fersman|Crater, craters
 0|Fesenkov|Crater, craters
-0|Feuillee|Crater, craters
+2|Feuillee|Crater, craters
 0|Finsch|Crater, craters
 0|Finsen|Crater, craters
 0|Firmicus|Crater, craters
@@ -655,7 +655,7 @@
 0|Hagen|Crater, craters
 0|Hahn|Crater, craters
 0|Haidinger|Crater, craters
-0|Hainzel|Crater, craters
+2|Hainzel|Crater, craters
 0|Haldane|Crater, craters
 0|Hale|Crater, craters
 0|Hall|Crater, craters
@@ -707,7 +707,7 @@
 0|Henry Freres|Crater, craters
 0|Henyey|Crater, craters
 0|Heraclitus|Crater, craters
-0|Hercules|Crater, craters
+2|Hercules|Crater, craters
 0|Herigonius|Crater, craters
 0|Hermann|Crater, craters
 0|Hermite|Crater, craters
@@ -782,7 +782,7 @@
 0|Joy|Crater, craters
 0|Jules Verne|Crater, craters
 0|Julienne|Crater, craters
-0|Julius Caesar|Crater, craters
+2|Julius Caesar|Crater, craters
 0|Kaiser|Crater, craters
 0|Kamerlingh Onnes|Crater, craters
 0|Kane|Crater, craters
@@ -804,7 +804,7 @@
 0|Khvol son|Crater, craters
 0|Kibal chich|Crater, craters
 0|Kidinnu|Crater, craters
-0|Kies|Crater, craters
+2|Kies|Crater, craters
 0|Kiess|Crater, craters
 0|Kimura|Crater, craters
 0|Kinau|Crater, craters
@@ -873,7 +873,7 @@
 0|Lacus Hiemalis|Lacus, lacūs
 0|Lacus Lenitatis|Lacus, lacūs
 0|Lacus Luxuriae|Lacus, lacūs
-0|Lacus Mortis|Lacus, lacūs
+2|Lacus Mortis|Lacus, lacūs
 0|Lacus Oblivionis|Lacus, lacūs
 0|Lacus Odii|Lacus, lacūs
 0|Lagalla|Crater, craters
@@ -890,7 +890,7 @@
 0|Lamarck|Crater, craters
 0|Lamb|Crater, craters
 0|Lambert|Crater, craters
-0|Lamont|Crater, craters
+2|Lamont|Crater, craters
 0|Lampland|Crater, craters
 0|Lame|Crater, craters
 0|Lamech|Crater, craters
@@ -944,7 +944,7 @@
 0|Lindblad|Crater, craters
 0|Lindenau|Crater, craters
 0|Lindsay|Crater, craters
-0|Linne|Crater, craters
+2|Linne|Crater, craters
 0|Liouville|Crater, craters
 0|Lippershey|Crater, craters
 0|Lippmann|Crater, craters
@@ -985,7 +985,7 @@
 0|Magelhaens|Crater, craters
 0|Maginus|Crater, craters
 0|Main|Crater, craters
-0|Mairan|Crater, craters
+2|Mairan|Crater, craters
 0|Maksutov|Crater, craters
 0|Malapert|Crater, craters
 0|Mallet|Crater, craters
@@ -1004,29 +1004,29 @@
 0|Marconi|Crater, craters
 0|Mary|Crater, craters
 0|Mare Anguis|Mare, maria
-0|Mare Australe|Mare, maria
-0|Mare Cognitum|Mare, maria
+2|Mare Australe|Mare, maria
+2|Mare Cognitum|Mare, maria
 1|Mare Crisium|Mare, maria|0
 0|Mare Fecunditatis|Mare, maria
 0|Mare Frigoris|Mare, maria
-0|Mare Humboldtianum|Mare, maria
+2|Mare Humboldtianum|Mare, maria
 0|Markov|Crater, craters
 0|Marth|Crater, craters
 0|Mare Humorum|Mare, maria
 0|Mare Imbrium|Mare, maria
 0|Mare Ingenii|Mare, maria
 2|Mare Insularum|Mare, maria
-0|Mare Marginis|Mare, maria
+2|Mare Marginis|Mare, maria
 0|Mare Moscoviense|Mare, maria
 0|Mare Nectaris|Mare, maria
 0|Mare Nubium|Mare, maria
 0|Michelson|Crater, craters
 0|Mare Orientale|Mare, maria
 0|Mare Serenitatis|Mare, maria
-0|Mare Smythii|Mare, maria
-0|Mare Spumans|Mare, maria
+2|Mare Smythii|Mare, maria
+2|Mare Spumans|Mare, maria
 0|Mare Tranquillitatis|Mare, maria
-0|Mare Undarum|Mare, maria
+2|Mare Undarum|Mare, maria
 0|Mare Vaporum|Mare, maria
 0|Maskelyne|Crater, craters
 0|Mason|Crater, craters
@@ -1058,7 +1058,7 @@
 0|Mercator|Crater, craters
 0|Mercurius|Crater, craters
 0|Merrill|Crater, craters
-0|Mersenius|Crater, craters
+2|Mersenius|Crater, craters
 0|Meshcherskiy|Crater, craters
 0|Messala|Crater, craters
 0|Messier|Crater, craters
@@ -1067,7 +1067,7 @@
 0|Mezentsev|Crater, craters
 0|Michael|Crater, craters
 0|Milankovic|Crater, craters
-0|Milichius|Crater, craters
+2|Milichius|Crater, craters
 0|Miller|Crater, craters
 0|Millikan|Crater, craters
 0|Mills|Crater, craters
@@ -1363,7 +1363,7 @@
 0|Rima Agatharchides|Rima, rimae
 0|Rima Agricola|Rima, rimae
 0|Rima Archytas|Rima, rimae
-0|Rima Ariadaeus|Rima, rimae
+2|Rima Ariadaeus|Rima, rimae
 0|Rima Artsimovich|Rima, rimae
 0|Rima Billy|Rima, rimae
 0|Rima Bradley|Rima, rimae
@@ -1371,7 +1371,7 @@
 0|Rima Calippus|Rima, rimae
 0|Rima Cardanus|Rima, rimae
 0|Rima Carmen|Rima, rimae
-0|Rima Cauchy|Rima, rimae
+2|Rima Cauchy|Rima, rimae
 0|Rima Cleomedes|Rima, rimae
 0|Rima Cleopatra|Rima, rimae
 0|Rima Conon|Rima, rimae
@@ -1389,7 +1389,7 @@
 0|Rima Gartner|Rima, rimae
 2|Rima Hadley|Rima, rimae
 0|Rima Hansteen|Rima, rimae
-0|Rima Hesiodus|Rima, rimae
+2|Rima Hesiodus|Rima, rimae
 0|Rima Rudolf|Rima, rimae
 0|Rima Hyginus|Rima, rimae
 0|Rima Jansen|Rima, rimae
@@ -1447,9 +1447,9 @@
 0|Shternberg  Sternberg|Crater, craters
 0|Stokes|Crater, craters
 0|Stoletov|Crater, craters
-0|Rimae Hippalus|Rima, rimae
+2|Rimae Hippalus|Rima, rimae
 0|Rimae Hypatia|Rima, rimae
-0|Rimae Janssen|Rima, rimae
+2|Rimae Janssen|Rima, rimae
 0|Rimae Kopff|Rima, rimae
 0|Rimae Littrow|Rima, rimae
 0|Rimae Maclear|Rima, rimae
@@ -1481,7 +1481,7 @@
 0|Rimae Sulpicius Gallus|Rima, rimae
 0|Rimae Taruntius|Rima, rimae
 0|Rimae Theaetetus|Rima, rimae
-0|Rimae Triesnecker|Rima, rimae
+2|Rimae Triesnecker|Rima, rimae
 0|Rimae Vasco da Gama|Rima, rimae
 0|Rimae Zupus|Rima, rimae
 0|Ritchey|Crater, craters
@@ -1737,7 +1737,7 @@
 0|Vallis Inghirami|Vallis, valles
 0|Vallis Palitzsch|Vallis, valles
 0|Vallis Planck|Vallis, valles
-0|Vallis Rheita|Vallis, valles
+2|Vallis Rheita|Vallis, valles
 0|Vallis Schrodinger|Vallis, valles
 0|Vallis Schroteri|Vallis, valles
 0|Vallis Snellius|Vallis, valles
@@ -1797,7 +1797,7 @@
 0|Walter|Crater, craters
 0|Walther|Crater, craters
 0|Wan Hoo  Van Gu|Crater, craters
-0|Wargentin|Crater, craters
+2|Wargentin|Crater, craters
 0|Warner|Crater, craters
 0|Waterman|Crater, craters
 0|Watson|Crater, craters
@@ -1829,7 +1829,7 @@
 0|Winkler|Crater, craters
 0|Winlock|Crater, craters
 0|Winthrop|Crater, craters
-0|Wolf|Crater, craters
+2|Wolf|Crater, craters
 0|Wollaston|Crater, craters
 0|Woltjer|Crater, craters
 0|Wood|Crater, craters
@@ -2821,8 +2821,8 @@
 0|Buisson X|Satellite Feature
 0|Buisson Y|Satellite Feature
 0|Buisson Z|Satellite Feature
-0|Bullialdus A|Satellite Feature
-0|Bullialdus B|Satellite Feature
+2|Bullialdus A|Satellite Feature
+2|Bullialdus B|Satellite Feature
 0|Bullialdus E|Satellite Feature
 0|Bullialdus F|Satellite Feature
 0|Bullialdus G|Satellite Feature
@@ -2974,8 +2974,8 @@
 0|Casatus K|Satellite Feature
 0|Cassegrain B|Satellite Feature
 0|Cassegrain H|Satellite Feature
-0|Cassini A|Satellite Feature
-0|Cassini B|Satellite Feature
+2|Cassini A|Satellite Feature
+2|Cassini B|Satellite Feature
 0|Cassini C|Satellite Feature
 0|Cassini E|Satellite Feature
 0|Cassini F|Satellite Feature
@@ -4490,9 +4490,9 @@
 0|Haidinger M|Satellite Feature
 0|Haidinger N|Satellite Feature
 0|Haidinger P|Satellite Feature
-0|Hainzel A|Satellite Feature
+2|Hainzel A|Satellite Feature
 0|Hainzel B|Satellite Feature
-0|Hainzel C|Satellite Feature
+2|Hainzel C|Satellite Feature
 0|Hainzel G|Satellite Feature
 0|Hainzel H|Satellite Feature
 0|Hainzel J|Satellite Feature
@@ -4712,9 +4712,9 @@
 0|Hercules B|Satellite Feature
 0|Hercules C|Satellite Feature
 0|Hercules D|Satellite Feature
-0|Hercules E|Satellite Feature
+2|Hercules E|Satellite Feature
 0|Hercules F|Satellite Feature
-0|Hercules G|Satellite Feature
+2|Hercules G|Satellite Feature
 0|Hercules H|Satellite Feature
 0|Hercules J|Satellite Feature
 0|Hercules K|Satellite Feature
@@ -4769,7 +4769,7 @@
 0|Hertzsprung V|Satellite Feature
 0|Hertzsprung X|Satellite Feature
 0|Hertzsprung Y|Satellite Feature
-0|Hesiodus A|Satellite Feature
+2|Hesiodus A|Satellite Feature
 0|Hesiodus B|Satellite Feature
 0|Hesiodus D|Satellite Feature
 0|Hesiodus E|Satellite Feature

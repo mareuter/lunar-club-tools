@@ -3,7 +3,6 @@ Created on Jun 1, 2012
 @author: Michael Reuter
 '''
 from PyQt4 import QtCore, QtGui
-import ui
 import ui.widgets
 
 class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
@@ -27,7 +26,6 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         self.updateUI()
         
     def updateUI(self):
-        print "Updating"
         self.moonInfoTab.updateUI()
         self.featuresTab.updateUI()
         

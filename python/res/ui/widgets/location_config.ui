@@ -41,12 +41,12 @@
       <widget class="QLineEdit" name="lat_deg_edit"/>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="lat_deg_label">
        <property name="text">
-        <string>0</string>
+        <string>o</string>
        </property>
        <property name="textFormat">
-        <enum>Qt::RichText</enum>
+        <enum>Qt::PlainText</enum>
        </property>
       </widget>
      </item>

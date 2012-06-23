@@ -20,6 +20,8 @@ class LocationConfig(QtGui.QDialog, Ui_LocationConfigDialog):
         super(LocationConfig, self).__init__(parent)
         self.setupUi(self)
         
+        self.buttonBox.button(QtGui.QDialogButtonBox.Ok).setEnabled(False)
+        
         # Validator for degrees
         degval = QtGui.QIntValidator()
         degval.setRange(0, 180)
@@ -35,7 +37,40 @@ class LocationConfig(QtGui.QDialog, Ui_LocationConfigDialog):
         self.long_min_edit.setValidator(hexval)
         self.long_sec_edit.setValidator(hexval)
         
+        # Setup the checks for valid lineedit content
+        self.connect(self.loc_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.lat_deg_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.lat_min_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.lat_sec_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.long_deg_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.long_min_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+        self.connect(self.long_sec_edit, QtCore.SIGNAL("editingFinished()"), 
+                     self._checkLineEdits)
+
+    def _checkLineEdits(self):
+        '''
+        This function checks the lineedits to make sure that all of them 
+        have valid information before allowing the Ok button to be enabled.
+        '''
+        lineedits = (self.loc_edit, self.lat_deg_edit, self.lat_min_edit,
+                     self.lat_sec_edit, self.long_deg_edit, self.long_min_edit,
+                     self.long_sec_edit)
+        for lineedit in lineedits:
+            if lineedit.text().isEmpty():
+                return
+        self.buttonBox.button(QtGui.QDialogButtonBox.Ok).setEnabled(True)
+        
     def setLocation(self):
+        '''
+        This function gathers the information recorded in the dialog and 
+        transfers it to the observation site object.
+        '''
         obs_info = utils.ObservingInfo()
         lat_deg = self.lat_deg_edit.text().toInt()[0]
         lat_min = self.lat_min_edit.text().toInt()[0]

@@ -42,6 +42,13 @@ class LunarFeatureContainer(object):
         for feature in self.features.values():
             yield feature
             
+    def inOrder(self):
+        '''
+        This function returns the dictionary sorted by the feature type.
+        @return: A sorted dictionary
+        '''
+        return sorted(self.features.values())
+            
     def load(self):
         '''
         This function reads the database and creates a feature for every 

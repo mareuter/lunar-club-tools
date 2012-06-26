@@ -48,19 +48,19 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                     ancestor = QtGui.QTreeWidgetItem(self.lunar_club_tree,
                                                      [feature.club_type])
                     parentFromTarget[feature.club_type] = ancestor
-                    targettype = feature.club_type + "/" + feature.feature_type
-                    parent = parentFromType.get(targettype)
-                    if parent is None:
-                        parent = QtGui.QTreeWidgetItem(ancestor, 
+                targettype = feature.club_type + "/" + feature.feature_type
+                parent = parentFromType.get(targettype)
+                if parent is None:
+                    parent = QtGui.QTreeWidgetItem(ancestor, 
                                                        [feature.feature_type])
-                        parentFromType[targettype] = parent
-                        item = QtGui.QTreeWidgetItem(parent, [feature.name,
-                                                              QtCore.QString("%L1").arg(feature.latitude)])
-                        item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-                        self.lunar_club_tree.expandItem(parent)
-                        self.lunar_club_tree.expandItem(ancestor)
-                        self.lunar_club_tree.resizeColumnToContents(0)
-                        self.lunar_club_tree.resizeColumnToContents(1)
+                    parentFromType[targettype] = parent
+                item = QtGui.QTreeWidgetItem(parent, [feature.name,
+                                                      QtCore.QString("%L1").arg(feature.latitude)])
+                item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+                self.lunar_club_tree.expandItem(parent)
+                self.lunar_club_tree.expandItem(ancestor)
+                self.lunar_club_tree.resizeColumnToContents(0)
+                self.lunar_club_tree.resizeColumnToContents(1)
         
     def populateLunarIITree(self):
         '''
@@ -74,15 +74,15 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         parentFromType = {}
         for feature in self.features:
             if feature.code_name in ("LunarII", "Both"):
-                ancestor = parentFromType.get(feature.club_type)
+                ancestor = parentFromType.get(feature.feature_type)
                 if ancestor is None:
                     ancestor = QtGui.QTreeWidgetItem(self.lunar_ii_tree,
                                                      [feature.feature_type])
-                    parentFromType[feature.feature_type] = ancestor
-                    item = QtGui.QTreeWidgetItem(ancestor, [feature.name,
-                                                            QtCore.QString("%L1").arg(feature.latitude)])
-                    item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-                    self.lunar_ii_tree.expandItem(ancestor)
-                    self.lunar_ii_tree.resizeColumnToContents(0)
-                    self.lunar_ii_tree.resizeColumnToContents(1)
+                parentFromType[feature.feature_type] = ancestor
+                item = QtGui.QTreeWidgetItem(ancestor, [feature.name,
+                                                        QtCore.QString("%L1").arg(feature.latitude)])
+                item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+                self.lunar_ii_tree.expandItem(ancestor)
+                self.lunar_ii_tree.resizeColumnToContents(0)
+                self.lunar_ii_tree.resizeColumnToContents(1)
 

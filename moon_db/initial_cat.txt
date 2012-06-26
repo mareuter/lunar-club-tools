@@ -152,7 +152,7 @@
 0|Bianchini|Crater, craters
 0|Biela|Crater, craters
 0|Bilharz|Crater, craters
-0|Billy|Crater, craters
+1|Billy|Crater, craters|2
 0|Bingham|Crater, craters
 0|Biot|Crater, craters
 0|Birkeland|Crater, craters
@@ -374,7 +374,7 @@
 0|Das|Crater, craters
 0|Daubree|Crater, craters
 0|Davisson|Crater, craters
-0|Davy|Crater, craters
+1|Davy|Crater, craters|2
 0|Dawes|Crater, craters
 0|Dawson|Crater, craters
 0|De Forest|Crater, craters
@@ -520,7 +520,7 @@
 0|Ewen|Crater, craters
 0|Eotvos|Crater, craters
 0|Fabbroni|Crater, craters
-0|Fabricius|Crater, craters
+1|Fabricius|Crater, craters|2
 0|Fabry|Crater, craters
 0|Fahrenheit|Crater, craters
 0|Fairouz|Crater, craters
@@ -560,7 +560,7 @@
 0|Fourier|Crater, craters
 0|Fowler|Crater, craters
 0|Fox|Crater, craters
-0|Fra Mauro|Crater, craters
+1|Fra Mauro|Crater, craters|2
 1|Fracastorius|Crater, craters|1
 0|Franck|Crater, craters
 0|Franklin|Crater, craters
@@ -573,7 +573,7 @@
 0|Froelich|Crater, craters
 0|Frost|Crater, craters
 0|Fryxell|Crater, craters
-0|Furnerius|Crater, craters
+1|Furnerius|Crater, craters|2
 0|Fenyi|Crater, craters
 0|G  Bond|Crater, craters
 0|Gadomski|Crater, craters
@@ -601,7 +601,7 @@
 0|Geissler|Crater, craters
 0|Horrocks|Crater, craters
 0|Geminus|Crater, craters
-0|Gemma Frisius|Crater, craters
+1|Gemma Frisius|Crater, craters|2
 0|Gerard|Crater, craters
 0|Gerasimovich|Crater, craters
 0|Gernsback|Crater, craters
@@ -725,7 +725,7 @@
 0|Hilbert|Crater, craters
 0|Hill|Crater, craters
 0|Hind|Crater, craters
-0|Hippalus|Crater, craters
+1|Hippalus|Crater, craters|2
 1|Hipparchus|Crater, craters|1
 0|Hippocrates|Crater, craters
 0|Hirayama|Crater, craters
@@ -763,7 +763,7 @@
 0|Isis|Crater, craters
 0|Ivan|Crater, craters
 0|Izsak|Crater, craters
-0|J  Herschel|Crater, craters
+1|J  Herschel|Crater, craters|2
 0|Jackson|Crater, craters
 0|Jacobi|Crater, craters
 0|Jansen|Crater, craters
@@ -991,7 +991,7 @@
 0|Mallet|Crater, craters
 0|Malyy|Crater, craters
 0|Mandel shtam|Crater, craters
-0|Manilius|Crater, craters
+1|Manilius|Crater, craters|2
 0|Manners|Crater, craters
 0|Manuel|Crater, craters
 0|Manzinus|Crater, craters
@@ -1061,7 +1061,7 @@
 2|Mersenius|Crater, craters
 0|Meshcherskiy|Crater, craters
 0|Messala|Crater, craters
-0|Messier|Crater, craters
+1|Messier|Crater, craters|2
 0|Metius|Crater, craters
 0|Meton|Crater, craters
 0|Mezentsev|Crater, craters
@@ -1075,7 +1075,7 @@
 0|Mineur|Crater, craters
 0|Minkowski|Crater, craters
 0|Minnaert|Crater, craters
-0|Mitchell|Crater, craters
+1|Mitchell|Crater, craters|2
 0|Mitra|Crater, craters
 0|Mohorovicic|Crater, craters
 0|Moigno|Crater, craters
@@ -1261,7 +1261,7 @@
 0|Phocylides|Crater, craters
 0|Piazzi|Crater, craters
 0|Piazzi Smyth|Crater, craters
-0|Picard|Crater, craters
+1|Picard|Crater, craters|2
 1|Piccolomini|Crater, craters|1
 0|Pickering|Crater, craters
 0|Pictet|Crater, craters
@@ -1269,7 +1269,7 @@
 0|Pilatre|Crater, craters
 0|Pingre|Crater, craters
 0|Pirquet|Crater, craters
-0|Pitatus|Crater, craters
+1|Pitatus|Crater, craters|2
 0|Pitiscus|Crater, craters
 0|Pizzetti|Crater, craters
 0|Plana|Crater, craters
@@ -1279,7 +1279,7 @@
 0|Plaskett|Crater, craters
 1|Plato|Crater, craters|1
 0|Playfair|Crater, craters
-0|Plinius|Crater, craters
+1|Plinius|Crater, craters|2
 0|Plum|Landing site name
 0|Plummer|Crater, craters
 0|Plutarch|Crater, craters
@@ -1304,7 +1304,7 @@
 0|Priestley|Crater, craters
 0|Prinz|Crater, craters
 0|Priscilla|Crater, craters
-0|Proclus|Crater, craters
+1|Proclus|Crater, craters|2
 0|Proctor|Crater, craters
 1|Promontorium Agarum|Promontorium, promontoria|2
 0|Promontorium Agassiz|Promontorium, promontoria
@@ -1345,7 +1345,7 @@
 0|Reichenbach|Crater, craters
 0|Reimarus|Crater, craters
 0|Reiner|Crater, craters
-0|Reiner Gamma|Albedo Feature
+1|Reiner Gamma|Albedo Feature|2
 0|Reinhold|Crater, craters
 0|Repsold|Crater, craters
 0|Resnik|Crater, craters
@@ -1550,7 +1550,7 @@
 0|Silberschlag|Crater, craters
 0|Simpelius|Crater, craters
 0|Sinas|Crater, craters
-0|Schickard|Crater, craters
+1|Schickard|Crater, craters|2
 0|Schiller|Crater, craters
 0|Schjellerup|Crater, craters
 0|Schlesinger|Crater, craters
@@ -2974,7 +2974,7 @@
 0|Casatus K|Satellite Feature
 0|Cassegrain B|Satellite Feature
 0|Cassegrain H|Satellite Feature
-2|Cassini A|Satellite Feature
+3|Cassini A|Satellite Feature|2
 2|Cassini B|Satellite Feature
 0|Cassini C|Satellite Feature
 0|Cassini E|Satellite Feature
@@ -6193,7 +6193,7 @@
 0|Messala G|Satellite Feature
 0|Messala J|Satellite Feature
 0|Messala K|Satellite Feature
-0|Messier A|Satellite Feature
+1|Messier A|Satellite Feature|2
 0|Messier B|Satellite Feature
 0|Messier D|Satellite Feature
 0|Messier E|Satellite Feature

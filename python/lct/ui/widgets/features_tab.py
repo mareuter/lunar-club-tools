@@ -6,6 +6,7 @@ Created on Jun 9, 2012
 from PyQt4 import QtGui, QtCore
 from ui_features_tab import Ui_FeaturesTabWidget
 import features
+import utils
 
 class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
     '''
@@ -54,8 +55,10 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                     parent = QtGui.QTreeWidgetItem(ancestor, 
                                                        [feature.feature_type])
                     parentFromType[targettype] = parent
+                feature_lat_str = utils.StrFmt.ddString(feature.latitude, 2, 
+                                                        "latitude")
                 item = QtGui.QTreeWidgetItem(parent, [feature.name,
-                                                      QtCore.QString("%L1").arg(feature.latitude)])
+                                                      QtCore.QString("%L1").arg(feature_lat_str)])
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_club_tree.expandItem(parent)
                 self.lunar_club_tree.expandItem(ancestor)
@@ -79,8 +82,10 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                     ancestor = QtGui.QTreeWidgetItem(self.lunar_ii_tree,
                                                      [feature.feature_type])
                 parentFromType[feature.feature_type] = ancestor
+                feature_lat_str = utils.StrFmt.ddString(feature.latitude, 2, 
+                                                        "latitude")
                 item = QtGui.QTreeWidgetItem(ancestor, [feature.name,
-                                                        QtCore.QString("%L1").arg(feature.latitude)])
+                                                        QtCore.QString("%L1").arg(feature_lat_str)])
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_ii_tree.expandItem(ancestor)
         self.lunar_ii_tree.resizeColumnToContents(0)

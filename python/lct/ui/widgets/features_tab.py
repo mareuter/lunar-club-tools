@@ -58,7 +58,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                 feature_lat_str = utils.StrFmt.ddString(feature.latitude, 2, 
                                                         "latitude")
                 item = QtGui.QTreeWidgetItem(parent, [feature.name,
-                                                      QtCore.QString("%L1").arg(feature_lat_str)])
+                                                      QtCore.QString("%1").arg(feature_lat_str)])
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_club_tree.expandItem(parent)
                 self.lunar_club_tree.expandItem(ancestor)
@@ -85,7 +85,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                 feature_lat_str = utils.StrFmt.ddString(feature.latitude, 2, 
                                                         "latitude")
                 item = QtGui.QTreeWidgetItem(ancestor, [feature.name,
-                                                        QtCore.QString("%L1").arg(feature_lat_str)])
+                                                        QtCore.QString("%1").arg(feature_lat_str)])
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_ii_tree.expandItem(ancestor)
         self.lunar_ii_tree.resizeColumnToContents(0)

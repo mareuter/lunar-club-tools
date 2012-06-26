@@ -59,8 +59,8 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_club_tree.expandItem(parent)
                 self.lunar_club_tree.expandItem(ancestor)
-                self.lunar_club_tree.resizeColumnToContents(0)
-                self.lunar_club_tree.resizeColumnToContents(1)
+        self.lunar_club_tree.resizeColumnToContents(0)
+        self.lunar_club_tree.resizeColumnToContents(1)
         
     def populateLunarIITree(self):
         '''
@@ -83,6 +83,5 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
                                                         QtCore.QString("%L1").arg(feature.latitude)])
                 item.setTextAlignment(1, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                 self.lunar_ii_tree.expandItem(ancestor)
-                self.lunar_ii_tree.resizeColumnToContents(0)
-                self.lunar_ii_tree.resizeColumnToContents(1)
-
+        self.lunar_ii_tree.resizeColumnToContents(0)
+        self.lunar_ii_tree.resizeColumnToContents(1)

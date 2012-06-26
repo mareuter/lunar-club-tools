@@ -58,7 +58,6 @@ r = shapefile.Reader(SHAPEFILE_NAME)
 for sr in r.shapeRecords():
     feature_name = sr.record[CLEAN_NAME]
     if feature_name in feature_dict:
-        print "A:", feature_name
         feature_dia = sr.record[DIAMETER]
         feature_lat = sr.record[CENTER_LAT]
         long = sr.record[CENTER_LONG]
@@ -104,6 +103,7 @@ features_table.append("Lunar_Club_Type TEXT")
 import sqlite3
 
 con = sqlite3.connect(OUTPUT_DB)
+con.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
 with con:
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS Features")

@@ -74,35 +74,53 @@ class MoonInfo(object):
         @param lfeature: The lunar feature to check for visibility
         @return: True if the feature is visible.
         '''
-        selco_longitude = self._colongToLong()
+        selco_longitude = math.fabs(self._colongToLong())
         print "Q:", selco_longitude
         cur_tod = self._getTimeOfDay()
         
         # Temporary fix until DB can be corrected.
-        if 180.0 <= lfeature.longitude < 360.0:
-            lfeature.longitude -= 360.0
+        #if 180.0 <= lfeature.longitude < 360.0:
+        #    lfeature.longitude -= 360.0
         
         min_long = lfeature.longitude + lfeature.delta_longitude/2.0
         max_long = lfeature.longitude - lfeature.delta_longitude/2.0
         
         print "A:", lfeature
         print "B:", min_long, max_long
+        
+        longs_neg = False
+        if min_long < 0 and max_long < 0:
+            temp = min_long
+            min_long = max_long
+            max_long = temp
+            longs_neg = True
+        
         is_visible = False
         latitude_scaling = math.cos(math.radians(math.fabs(lfeature.latitude)))
         cutoff = MoonInfo.FEATURE_CUTOFF / latitude_scaling
         
-        if cur_tod == MoonInfo.MORNING:
-            if lfeature.feature_type == "Mare":
+        if lfeature.feature_type == "Mare":
+            if cur_tod == MoonInfo.MORNING:
                 is_visible = selco_longitude <= max_long
-            else:
-                is_visible = selco_longitude <= max_long - cutoff
-            
-        if cur_tod == MoonInfo.EVENING:
-            if lfeature.feature_type == "Mare":
+            if cur_tod == MoonInfo.EVENING:
                 is_visible = selco_longitude >= min_long
-            else:
-                is_visible = selco_longitude >= min_long + cutoff
+        else:
+            if cur_tod == MoonInfo.MORNING:
+                long_cutoff = max_long - cutoff
+                if longs_neg:
+                    max_long = math.fabs(max_long)
+                    long_cutoff = math.fabs(long_cutoff)
+                print "D:", max_long, long_cutoff
+                is_visible = max_long <= selco_longitude <= long_cutoff
+            if cur_tod == MoonInfo.EVENING:
+                long_cutoff = min_long + cutoff
+                if longs_neg:
+                    min_long = math.fabs(min_long)
+                    long_cutoff = math.fabs(long_cutoff)
+                print "D:", min_long, long_cutoff
+                is_visible = min_long >= selco_longitude >= long_cutoff
             
+        print "C:", is_visible
         return is_visible
     
     def _getPhase(self):

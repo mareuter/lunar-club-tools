@@ -98,26 +98,26 @@ class MoonInfo(object):
         is_visible = False
         latitude_scaling = math.cos(math.radians(math.fabs(lfeature.latitude)))
         cutoff = MoonInfo.FEATURE_CUTOFF / latitude_scaling
-        
-        if lfeature.feature_type == "Mare":
-            if cur_tod == MoonInfo.MORNING:
-                is_visible = selco_longitude <= max_long
-            if cur_tod == MoonInfo.EVENING:
-                is_visible = selco_longitude >= min_long
-        else:
-            if cur_tod == MoonInfo.MORNING:
-                long_cutoff = max_long - cutoff
-                if longs_neg:
-                    max_long = math.fabs(max_long)
-                    long_cutoff = math.fabs(long_cutoff)
-                print "D:", max_long, long_cutoff
+
+        if cur_tod == MoonInfo.MORNING:
+            long_cutoff = max_long - cutoff
+            if longs_neg:
+                max_long = math.fabs(max_long)
+                long_cutoff = math.fabs(long_cutoff)
+            print "D:", max_long, long_cutoff
+            if lfeature.feature_type == "Mare":
+                is_visible = max_long <= selco_longitude
+            else:
                 is_visible = max_long <= selco_longitude <= long_cutoff
-            if cur_tod == MoonInfo.EVENING:
-                long_cutoff = min_long + cutoff
-                if longs_neg:
-                    min_long = math.fabs(min_long)
-                    long_cutoff = math.fabs(long_cutoff)
-                print "D:", min_long, long_cutoff
+        if cur_tod == MoonInfo.EVENING:
+            long_cutoff = min_long + cutoff
+            if longs_neg:
+                min_long = math.fabs(min_long)
+                long_cutoff = math.fabs(long_cutoff)
+            print "D:", min_long, long_cutoff
+            if lfeature.feature_type == "Mare":
+                is_visible = min_long >= selco_longitude
+            else:
                 is_visible = min_long >= selco_longitude >= long_cutoff
             
         print "C:", is_visible

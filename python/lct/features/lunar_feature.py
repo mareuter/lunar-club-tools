@@ -27,6 +27,10 @@ class LunarFeature(object):
         self.club_type = QtCore.QString(str(club_type))
         
     def __str__(self):
+        '''
+        This function produces the string representation of the lunar feature.
+        @return: The string representation.
+        '''
         result = []
         result.append("Name = %s" % self.name)
         result.append("Lat/Long = (%.2lf, %.2lf)" % (self.latitude, self.longitude))
@@ -34,4 +38,8 @@ class LunarFeature(object):
         return os.linesep.join(result)
     
     def __repr__(self):
+        '''
+        This function produces the pickleable format for the lunar feature.
+        @return: The object representation.
+        '''
         return self.__str__()

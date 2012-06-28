@@ -4,6 +4,7 @@ Created on Jun 1, 2012
 '''
 from PyQt4 import QtCore, QtGui
 import ui.widgets
+import version
 
 class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
     '''
@@ -22,6 +23,8 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
                      self.close)
         self.connect(self.actionLocation, QtCore.SIGNAL("triggered()"),
                      self.openLocationConfigDialog)
+        self.connect(self.actionLunarClubTools, QtCore.SIGNAL("triggered()"),
+                     self.about)
         
         self.updateUI()
         
@@ -37,6 +40,17 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         self.connect(dialog, QtCore.SIGNAL("updateLocation"), self.updateUI)
         if dialog.exec_():
             dialog.setLocation()
+           
+    def about(self):
+        QtGui.QMessageBox.about(self, "About Lunar Club Tools",
+                                """
+                                <b>Lunar Club Tools</b> v%s
+                                <p>This application determines the current 
+                                features visible for the Astronomical League's 
+                                Lunar Club and Lunar II Club.
+                                <br><br>
+                                Copyleft 2012 Type II Software
+                                """ % version.version)
            
 def main():
     import sys

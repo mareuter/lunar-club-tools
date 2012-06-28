@@ -55,8 +55,15 @@
     </property>
     <addaction name="actionLocation"/>
    </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionLunarClubTools"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuConfigure"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -79,6 +86,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionLunarClubTools">
+   <property name="text">
+    <string>Lunar Club Tools</string>
+   </property>
+   <property name="toolTip">
+    <string>About Lunar Club Tools</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

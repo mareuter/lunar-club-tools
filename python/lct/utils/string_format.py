@@ -21,6 +21,9 @@ class StrFmt(object):
     def floatString(cls, ifloat, precision):
         """
         This function prints a float as a string with a given precision.
+        @param ifloat: The float value to stringify
+        @param precision: The number of values after the decimal to print.
+        @return: The string representation of the float.
         """
         fmt = "%%.%df" % precision
         return fmt % ifloat

@@ -28,6 +28,10 @@ class ObservingSite(object):
         self._observer.long = self.toCoordString("long")
     
     def __str__(self):
+        '''
+        This function gives the string representation of the feature object.
+        @return: A string representation.
+        '''
         result = []
         result.append("Latitude: %s" % self.toCoordString("lat"))
         result.append("Longitude: %s" % self.toCoordString("long"))
@@ -64,26 +68,57 @@ class ObservingSite(object):
         setattr(self._observer, coord_type, self.toCoordString(coord_type))
     
     def toCoordString(self, coord_type):
+        '''
+        This function returns
+        @param coord_type: The coordinate to request: [lat, long].
+        @return: A colon-separated string of the coordinate.
+        '''
         coord = getattr(self, "_"+coord_type+"itude")
         return self._tupleToString(coord)
     
     def toCoordTuple(self, coord_type):
+        '''
+        This function returns the requested coordinate as a 3-tuple (DMS).
+        @param coord_type: The coordinate to request: [lat, long].
+        @return: The DMS 3-tuple.
+        '''
         return getattr(self, "_"+coord_type+"itude")
     
     def getDateTime(self):
+        '''
+        This function returns an ISO8600 date/time string.
+        @return: The local date/time.
+        '''
         local_time = ephem.localtime(self._observer.date)
         return str(local_time.strftime("%Y-%m-%dT%H:%M:%S%z"))
     
     def getLocalDate(self):
+        '''
+        This function returns the local date as a string.
+        @return: The local date.
+        '''
         return self.getDateTime().split('T')[0]
     
     def getLocalTime(self):
+        '''
+        This function returns the local time as a string.
+        @return: The local time.
+        '''
         return self.getDateTime().split('T')[-1]
     
     def getObserver(self):
+        '''
+        This function returns the PyEphem Observer object.
+        @return: The current observer object.
+        '''
         return self._observer
     
     def getLocationString(self):
+        '''
+        This function returns the latitude and longitude as a combined string.
+        Each coordinate has a directional tag.
+        @return: The latitude and longitude as a single string.
+        '''
         result = []
         result.append(self._tupleToDmsString("lat"))
         result.append(self._tupleToDmsString("long"))

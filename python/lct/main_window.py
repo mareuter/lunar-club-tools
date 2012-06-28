@@ -29,19 +29,33 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
         self.updateUI()
         
     def updateUI(self):
+        '''
+        This function updates the main window UI and the sub-component UIs.
+        '''
         self.moonInfoTab.updateUI()
         self.featuresTab.updateUI()
         
     def closeEvent(self, event):
+        '''
+        This function handles issues that need to be addressed when the 
+        program closes.
+        @param event: The current event.
+        '''
         pass
         
     def openLocationConfigDialog(self):
+        '''
+        This function sets up and opens the location configuration dialog.
+        '''
         dialog = ui.widgets.LocationConfig()
         self.connect(dialog, QtCore.SIGNAL("updateLocation"), self.updateUI)
         if dialog.exec_():
             dialog.setLocation()
            
     def about(self):
+        '''
+        This function creates the about dialog box.
+        '''
         QtGui.QMessageBox.about(self, "About Lunar Club Tools",
                                 """
                                 <b>Lunar Club Tools</b> v%s
@@ -53,6 +67,9 @@ class LunarClubTools(QtGui.QMainWindow, ui.Ui_MainWindow):
                                 """ % version.version)
            
 def main():
+    '''
+    This is the entrance point for the program.
+    '''
     import sys
     app = QtGui.QApplication(sys.argv)
     app.setOrganizationName("Type II Software")

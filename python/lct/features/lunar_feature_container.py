@@ -4,6 +4,7 @@ Created on Jun 11, 2012
 @author: Michael Reuter
 '''
 import sqlite3
+from PyQt4 import QtCore
 from lunar_feature import LunarFeature
 import utils
 
@@ -47,7 +48,13 @@ class LunarFeatureContainer(object):
         This function returns the dictionary sorted by the feature type.
         @return: A sorted dictionary
         '''
-        return sorted(self.features.values())
+        def compare(a, b):
+            if a.feature_type != b.feature_type:
+                return QtCore.QString.localeAwareCompare(a.feature_type,
+                                                         b.feature_type)
+            else:
+                return QtCore.QString.localeAwareCompare(a.name, b.name)
+        return sorted(self.features.values(), cmp=compare)
             
     def load(self):
         '''

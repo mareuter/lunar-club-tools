@@ -42,7 +42,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.lunar_club_tree.setItemsExpandable(True)
         parentFromTarget = {}
         parentFromType = {}
-        for feature in self.features:
+        for feature in self.features.inOrder():
             if feature.code_name in ("Lunar", "Both"):
                 ancestor = parentFromTarget.get(feature.club_type)
                 if ancestor is None:

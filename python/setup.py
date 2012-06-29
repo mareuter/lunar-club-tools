@@ -102,16 +102,21 @@ if __name__ == "__main__":
     setup(name = PACKAGE,
           version = VERSION,
           description = 'Lunar Club Tools',
+          author = 'Michael Reuter',
+          author_email = 'mareuternh@gmail.com',
           license = 'MIT Academic',
           cmdclass = {'install_data': smart_install_data,
                       'build_qt': build_qt},
-          data_files = [ ('lct/ui', glob.glob('%s/ui/*.ui' % PACKAGE)),
-                        ('lct/images', glob.glob('images/*.svg')) ],
-                          #('dgspowder/images', glob.glob('images/*.png')+
+          data_files = [ ('lct/ui', glob.glob('res/ui/*.ui')),
+                        ('lct/ui/widgets', glob.glob('res/ui/widgets/*.ui')),
+                        ('lct/db', '%s/db' % PACKAGE)
+                        ('lct/images', glob.glob('res/images/*.svg')) ],
           package_dir = {'lct': 'lct',
                          'lct.ui': 'lct/ui',
-                         'lct.info': 'lct/info'},
+                         'lct.features': 'lct/features',
+                         'lct.utils': 'lct/utils'},
           packages = ['lct',
+                      'lct.features',
                       'lct.ui',
-                      'lct.info'])
+                      'lct.utils'])
           #scripts = ['bin/planet_weight_calc.py'])

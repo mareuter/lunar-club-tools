@@ -3,6 +3,7 @@ Created on Jun 11, 2012
 
 @author: Michael Reuter
 '''
+import operator
 import sqlite3
 from PyQt4 import QtCore
 from lunar_feature import LunarFeature
@@ -53,8 +54,13 @@ class LunarFeatureContainer(object):
                 return QtCore.QString.localeAwareCompare(a.feature_type,
                                                          b.feature_type)
             else:
-                return QtCore.QString.localeAwareCompare(a.name, b.name)
+                return QtCore.QString.localeAwareCompare(a.latitude, b.latitude)
         return sorted(self.features.values(), cmp=compare)
+
+    def inClubTypeOrder(self):
+        return sorted(self.features.values(), key=operator.attrgetter('club_type',
+                                                                      'feature_type',
+                                                                      'latitude'))
             
     def load(self):
         '''

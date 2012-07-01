@@ -20,6 +20,7 @@ class MoonInfo(object):
                    "Third Quarter", "Waning Cresent")
     MORNING, EVENING = range(2)
     FEATURE_CUTOFF = 15.0 # degrees
+    NO_CUTOFF_TYPE = ("Mare", "Oceanus")
 
     def __init__(self):
         '''
@@ -105,7 +106,7 @@ class MoonInfo(object):
                 max_long = math.fabs(max_long)
                 long_cutoff = math.fabs(long_cutoff)
             print "D:", max_long, long_cutoff
-            if lfeature.feature_type == "Mare":
+            if lfeature.feature_type in MoonInfo.NO_CUTOFF_TYPE:
                 is_visible = max_long <= selco_longitude
             else:
                 is_visible = max_long <= selco_longitude <= long_cutoff
@@ -115,7 +116,7 @@ class MoonInfo(object):
                 min_long = math.fabs(min_long)
                 long_cutoff = math.fabs(long_cutoff)
             print "D:", min_long, long_cutoff
-            if lfeature.feature_type == "Mare":
+            if lfeature.feature_type == MoonInfo.NO_CUTOFF_TYPE:
                 is_visible = min_long >= selco_longitude
             else:
                 is_visible = min_long >= selco_longitude >= long_cutoff

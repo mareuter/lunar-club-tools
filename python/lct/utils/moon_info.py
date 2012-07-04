@@ -86,7 +86,7 @@ class MoonInfo(object):
         min_long = lfeature.longitude + lfeature.delta_longitude/2.0
         max_long = lfeature.longitude - lfeature.delta_longitude/2.0
         
-        print "A:", lfeature
+        print "A:", lfeature, lfeature.delta_longitude
         print "B:", min_long, max_long
         
         longs_neg = False
@@ -115,11 +115,11 @@ class MoonInfo(object):
             if longs_neg:
                 min_long = math.fabs(min_long)
                 long_cutoff = math.fabs(long_cutoff)
-            print "D:", min_long, long_cutoff
-            if lfeature.feature_type == MoonInfo.NO_CUTOFF_TYPE:
-                is_visible = min_long >= selco_longitude
+            print "DD:", min_long, long_cutoff
+            if lfeature.feature_type in MoonInfo.NO_CUTOFF_TYPE:
+                is_visible = min_long <= selco_longitude
             else:
-                is_visible = min_long >= selco_longitude >= long_cutoff
+                is_visible = min_long <= selco_longitude <= long_cutoff
             
         print "C:", is_visible
         return is_visible

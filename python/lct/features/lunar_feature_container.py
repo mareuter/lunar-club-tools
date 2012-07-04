@@ -17,8 +17,7 @@ class LunarFeatureContainer(object):
     This class is responsible for gathering and distributing the lunar 
     feature information.
     '''
-    DEBUG = False
-
+    DEBUG = True
 
     def __init__(self, dbname="lct/db/moon.db"):
         '''
@@ -54,13 +53,15 @@ class LunarFeatureContainer(object):
                 return QtCore.QString.localeAwareCompare(a.feature_type,
                                                          b.feature_type)
             else:
-                return QtCore.QString.localeAwareCompare(a.latitude, b.latitude)
+                # > should be +1, but need -1 to get descending ordering to 
+                # present features at N latitudes first.
+                if a.latitude > b.latitude:
+                    return -1
+                elif a.latitude < b.latitude:
+                    return 1
+                elif a.latitude == b.latitude:
+                    return 0
         return sorted(self.features.values(), cmp=compare)
-
-    def inClubTypeOrder(self):
-        return sorted(self.features.values(), key=operator.attrgetter('club_type',
-                                                                      'feature_type',
-                                                                      'latitude'))
             
     def load(self):
         '''

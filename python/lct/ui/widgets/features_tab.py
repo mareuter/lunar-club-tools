@@ -42,7 +42,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.lunar_club_tree.setItemsExpandable(True)
         parentFromTarget = {}
         parentFromType = {}
-        for feature in self.features.inClubTypeOrder():
+        for feature in self.features.inOrder():
             if feature.code_name in ("Lunar", "Both"):
                 ancestor = parentFromTarget.get(feature.club_type)
                 if ancestor is None:
@@ -75,7 +75,7 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.lunar_ii_tree.setHeaderLabels(["Type/Name", "Latitude"])
         self.lunar_ii_tree.setItemsExpandable(True)
         parentFromType = {}
-        for feature in self.features.inClubTypeOrder():
+        for feature in self.features.inOrder():
             if feature.code_name in ("LunarII", "Both"):
                 ancestor = parentFromType.get(feature.feature_type)
                 if ancestor is None:

@@ -318,7 +318,7 @@
 0|Clairaut|Crater, craters
 0|Clark|Crater, craters
 0|Clausius|Crater, craters
-1|Clavius|Crater, craters|1
+3|Clavius|Crater, craters|1
 1|Cleomedes|Crater, craters|1
 0|Cleostratus|Crater, craters
 0|Clerke|Crater, craters
@@ -1061,7 +1061,7 @@
 2|Mersenius|Crater, craters
 0|Meshcherskiy|Crater, craters
 0|Messala|Crater, craters
-1|Messier|Crater, craters|2
+3|Messier|Crater, craters|2
 0|Metius|Crater, craters
 0|Meton|Crater, craters
 0|Mezentsev|Crater, craters
@@ -1156,7 +1156,7 @@
 0|Madler|Crater, craters
 0|Mobius|Crater, craters
 0|Mosting|Crater, craters
-0|Muller|Crater, craters
+2|Muller|Crater, craters
 0|Nagaoka|Crater, craters
 0|Nansen|Crater, craters
 0|Naonobu|Crater, craters
@@ -1304,7 +1304,7 @@
 0|Priestley|Crater, craters
 0|Prinz|Crater, craters
 0|Priscilla|Crater, craters
-1|Proclus|Crater, craters|2
+3|Proclus|Crater, craters|2
 0|Proctor|Crater, craters
 1|Promontorium Agarum|Promontorium, promontoria|2
 0|Promontorium Agassiz|Promontorium, promontoria
@@ -1513,7 +1513,7 @@
 0|Rupes Kelvin|Rupes, rupēs
 0|Rupes Liebig|Rupes, rupēs
 0|Rupes Mercator|Rupes, rupēs
-1|Rupes Recta|Rupes, rupēs|2
+3|Rupes Recta|Rupes, rupēs|2
 0|Rupes Toscanelli|Rupes, rupēs
 0|Russell|Crater, craters
 0|Ruth|Crater, craters
@@ -1723,13 +1723,13 @@
 0|Tsu Chung Chi|Crater, craters
 0|Tucker|Crater, craters
 0|Turner|Crater, craters
-1|Tycho|Crater, craters|1
+3|Tycho|Crater, craters|1
 0|Tyndall|Crater, craters
 0|Ukert|Crater, craters
 0|Ulugh Beigh|Crater, craters
 0|Urey|Crater, craters
 0|Valier|Crater, craters
-1|Vallis Alpes|Vallis, valles|2
+3|Vallis Alpes|Vallis, valles|2
 0|Vallis Baade|Vallis, valles
 0|Vallis Bohr|Vallis, valles
 0|Vallis Bouvard|Vallis, valles
@@ -2863,7 +2863,7 @@
 0|Buys Ballot Z|Satellite Feature
 0|Byrd C|Satellite Feature
 0|Byrd D|Satellite Feature
-0|Byrgius A|Satellite Feature
+2|Byrgius A|Satellite Feature
 0|Byrgius B|Satellite Feature
 0|Byrgius D|Satellite Feature
 0|Byrgius E|Satellite Feature
@@ -3379,7 +3379,7 @@
 0|D Arrest A|Satellite Feature
 0|D Arrest B|Satellite Feature
 0|Davy U|Satellite Feature
-0|Davy Y|Satellite Feature
+2|Davy Y|Satellite Feature
 0|Dawson D|Satellite Feature
 0|Dawson V|Satellite Feature
 0|De Forest N|Satellite Feature
@@ -6193,7 +6193,7 @@
 0|Messala G|Satellite Feature
 0|Messala J|Satellite Feature
 0|Messala K|Satellite Feature
-1|Messier A|Satellite Feature|2
+3|Messier A|Satellite Feature|2
 0|Messier B|Satellite Feature
 0|Messier D|Satellite Feature
 0|Messier E|Satellite Feature

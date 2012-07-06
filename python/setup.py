@@ -79,7 +79,7 @@ class build_qt(Command):
     def run(self):
         # Make resources
         qtr = "res/resources.qrc"
-        pyqtr = "%s/ui/qrc_resources.py" % PACKAGE
+        pyqtr = "%s/resources_rc.py" % PACKAGE
         if isNewer(qtr, pyqtr):
             pyrcc_cmd = "pyrcc4 -o %s %s" % (pyqtr, qtr)
             print pyrcc_cmd

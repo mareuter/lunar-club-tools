@@ -70,18 +70,14 @@ class MoonInfo(object):
         SELCO needs to be within 15 degrees of the feature from FM to NM. 
         Features closer to the poles are visible much longer after the 15 
         degree cutoff. A 1/cos(latitude) will be applied to the cutoff. 
-        Mare are a special exception and once FULLY visible they are always 
-        visible.
+        Mare and Oceanus are special exceptions and once FULLY visible they are 
+        always visible.
         @param lfeature: The lunar feature to check for visibility
         @return: True if the feature is visible.
         '''
         selco_longitude = math.fabs(self._colongToLong())
         print "Q:", selco_longitude
         cur_tod = self._getTimeOfDay()
-        
-        # Temporary fix until DB can be corrected.
-        #if 180.0 <= lfeature.longitude < 360.0:
-        #    lfeature.longitude -= 360.0
         
         min_long = lfeature.longitude + lfeature.delta_longitude/2.0
         max_long = lfeature.longitude - lfeature.delta_longitude/2.0
@@ -157,7 +153,7 @@ class MoonInfo(object):
     def _getTimeOfDay(self):
         '''
         This function determines the current time of day on the moon. In 
-        otherwords, if the sun is rising on the moon it is (morning) or if the 
+        otherwords, if the sun is rising on the moon it is morning or if the 
         sun is setting on the moon it is evening.
         @return: The current time of day.
         '''

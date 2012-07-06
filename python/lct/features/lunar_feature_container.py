@@ -3,7 +3,6 @@ Created on Jun 11, 2012
 
 @author: Michael Reuter
 '''
-import operator
 import sqlite3
 from PyQt4 import QtCore
 from lunar_feature import LunarFeature
@@ -17,7 +16,7 @@ class LunarFeatureContainer(object):
     This class is responsible for gathering and distributing the lunar 
     feature information.
     '''
-    DEBUG = True
+    DEBUG = False
 
     def __init__(self, dbname="lct/db/moon.db"):
         '''

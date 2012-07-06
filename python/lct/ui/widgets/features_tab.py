@@ -41,14 +41,18 @@ class FeaturesTab(QtGui.QWidget, Ui_FeaturesTabWidget):
         self.lunar_club_tree.setHeaderLabels(["Target/Type/Name", "Latitude"])
         self.lunar_club_tree.setItemsExpandable(True)
         parentFromTarget = {}
+        # Set Target values first since they need to be in a specific order.
+        for club_type in utils.LUNAR_CLUB_TARGET_TYPES:
+            # Need to be QStrings to match object in LunarFeature
+            qstr_club_type = QtCore.QString(club_type)
+            ancestor = QtGui.QTreeWidgetItem(self.lunar_club_tree, 
+                                             [qstr_club_type])
+            parentFromTarget[qstr_club_type] = ancestor
+        
         parentFromType = {}
         for feature in self.features.inOrder():
             if feature.code_name in ("Lunar", "Both"):
-                ancestor = parentFromTarget.get(feature.club_type)
-                if ancestor is None:
-                    ancestor = QtGui.QTreeWidgetItem(self.lunar_club_tree,
-                                                     [feature.club_type])
-                    parentFromTarget[feature.club_type] = ancestor
+                ancestor = parentFromTarget.get(feature.club_type) 
                 targettype = feature.club_type + "/" + feature.feature_type
                 parent = parentFromType.get(targettype)
                 if parent is None:

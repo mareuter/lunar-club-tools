@@ -101,12 +101,15 @@ cauchy_tau = ("Cauchy Tau", 10.2, 7.53333, 36.73333, 0.3364, 0.3364,
               "Dome", "Taruntius", "LAC-61", "LunarII", None)
 kies_pi = ("Kies Pi", 13.0, -26.93333, -24.23333, 0.4288, 0.4288,
            "Dome", "Pitatus", "LAC-94", "LunarII", None)
+milichius_pi = ("Milichius Pi", 10.0, 10.2, -31.2, 0.3298, 0.3298, 
+                "Dome", "Kepler", "LAC-57", "LunarII", None)
 
 records.append(arago_alpha)
 records.append(arago_beta)
 records.append(cauchy_omega)
 records.append(cauchy_tau)
 records.append(kies_pi)
+records.append(milichius_pi)
 
 # Setup SQL table
 features_table = []

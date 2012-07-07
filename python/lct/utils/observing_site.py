@@ -131,6 +131,17 @@ class ObservingSite(object):
         '''
         self._name = name
         
+    def setLocation(self, name, latitude, longitude):
+        '''
+        This function sets all of the location information.
+        @param name: A string for the observing location.
+        @param latitude: The location latitude as a 3-tuple of DMS
+        @param longitude: The location longitude as a 3-tuple of DMS
+        '''
+        self.setLocationName(name)
+        self.fromCoordTuple('lat', latitude)
+        self.fromCoordTuple('long', longitude)
+        
 if __name__ == "__main__":
     obs = ObservingSite()
     print obs

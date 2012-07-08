@@ -20,10 +20,12 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         self.setupUi(self)
         self._set_css_labels(self.obs_date_label, self.obs_time_label,
                             self.location_label, self.moon_age_label,
-                            self.moon_colong_label, self.moon_illum_label)
+                            self.moon_colong_label, self.moon_illum_label,
+                            self.moon_phase_label)
         self._set_css_edits(self.obs_date_edit, self.obs_time_edit,
                             self.location_edit, self.moon_age_edit,
-                            self.moon_colong_edit, self.moon_illum_edit)
+                            self.moon_colong_edit, self.moon_illum_edit,
+                            self.moon_phase_edit)
         
     def updateUI(self):
         '''
@@ -35,6 +37,7 @@ class MoonInfoTab(QtGui.QWidget, Ui_MoonInfoTabWidget):
         self.obs_date_edit.setText(obsinfo.obs_site.getLocalDate())
         self.obs_time_edit.setText(obsinfo.obs_site.getLocalTime())
         self.location_edit.setText(obsinfo.obs_site.getLocationString())
+        self.moon_phase_edit.setText(obsinfo.moon_info.getPhaseAsString())
         self.moon_illum_edit.setText(obsinfo.moon_info.illumination(True))
         self.moon_colong_edit.setText(obsinfo.moon_info.colong())
         self.moon_age_edit.setText(obsinfo.moon_info.age())

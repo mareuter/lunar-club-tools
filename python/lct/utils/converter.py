@@ -3,6 +3,7 @@ Created on Jun 21, 2012
 
 @author: Michael Reuter
 '''
+import math
 
 class Converter(object):
     '''
@@ -37,6 +38,8 @@ class Converter(object):
         '''
         degrees = int(decdeg)
         decdeg -= degrees
+        # Ensure that minutes and seconds don't get a negative transferred.
+        decdeg = math.fabs(decdeg)
         decdeg *= 60.0
         minutes = int(decdeg)
         decdeg -= minutes

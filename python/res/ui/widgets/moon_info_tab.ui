@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="obs_date_label">
@@ -59,7 +59,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="location_label">
@@ -90,17 +90,17 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="moon_phase_label">
+      <widget class="QLabel" name="moon_illum_label">
        <property name="text">
-        <string>Moon Phase:</string>
+        <string>Moon Illumination:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="moon_phase_edit">
+      <widget class="QLabel" name="moon_illum_edit">
        <property name="text">
         <string/>
        </property>
@@ -121,7 +121,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="moon_colong_label">
@@ -152,7 +152,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QLabel" name="moon_age_label">
@@ -190,7 +190,7 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

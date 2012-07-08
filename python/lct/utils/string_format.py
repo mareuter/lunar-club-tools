@@ -18,15 +18,19 @@ class StrFmt(object):
         pass
     
     @classmethod
-    def floatString(cls, ifloat, precision):
+    def floatString(cls, ifloat, precision, postfix=None):
         """
         This function prints a float as a string with a given precision.
         @param ifloat: The float value to stringify
         @param precision: The number of values after the decimal to print.
+        @param postfix: Add a string to the end. Not padded.
         @return: The string representation of the float.
         """
         fmt = "%%.%df" % precision
-        return fmt % ifloat
+        istr = fmt % ifloat
+        if postfix is not None:
+            istr += postfix
+        return istr
     
     @classmethod
     def ddString(cls, decdeg, precision, coord_type):

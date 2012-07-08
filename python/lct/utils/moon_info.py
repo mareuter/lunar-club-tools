@@ -53,13 +53,17 @@ class MoonInfo(object):
         '''
         return str(self._moon.colong)
     
-    def phase(self):
+    def illumination(self, use_postfix=False):
         '''
         This function returns the illuminated fraction of the Moon.
-        @return: The fraction of the illuminated Moon (<=1).
+        @param use_postfix: If true, put a % after the number in the string.
+        @return: The fraction of the illuminated Moon (<=100.0).
         '''
-        phase_fraction = self._moon.phase / 100.0
-        return utils.StrFmt.floatString(phase_fraction, 2)
+        if use_postfix:
+            pf = '%'
+        else:
+            pf = None
+        return utils.StrFmt.floatString(self._moon.phase, 1, postfix=pf)
     
     def isVisible(self, lfeature):
         '''

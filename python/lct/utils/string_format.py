@@ -58,3 +58,17 @@ class StrFmt(object):
                 
         dd_str = cls.floatString(decdeg, precision)
         return dd_str + u'\u00b0' + ' ' + dir_tag
+    
+    @classmethod
+    def dmsString(cls, dms):
+        '''
+        This function takes a DMS tuple (can be DM as well), and returns a 
+        string with angle marks for each component.
+        @param dms: A 2 or 3 tuple containing DM or DMS information.
+        @return: An angle string with angle marks for each component.
+        '''
+        astr = ''
+        for i, val in enumerate(dms):
+            astr += str(val) + utils.ANGLE_MARKERS[i] + ' '
+        return astr.strip()
+        

@@ -119,6 +119,19 @@ class MoonInfo(object):
         print "C:", is_visible
         return is_visible
     
+    def libration(self, coord_type):
+        '''
+        This function retrieves the current lunar libration for the given 
+        coordinate: [lat, long]. The value from the Moon object is in radians
+        and needs to be converted to degrees.
+        @param coord_type: Either latitude or longitude.
+        @return: The libration coordinate as a string.
+        '''
+        libration = getattr(self._moon, 'libration_%s' % coord_type)
+        dms = utils.Converter.ddToDms(math.degrees(libration))
+        # Only take degrees and minutes.
+        return utils.StrFmt.dmsString(dms[:2])
+    
     def _getPhase(self):
         '''
         This function returns the moon phase according to standard nomenclature.

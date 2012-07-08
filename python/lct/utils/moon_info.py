@@ -63,7 +63,8 @@ class MoonInfo(object):
             pf = '%'
         else:
             pf = None
-        return utils.StrFmt.floatString(self._moon.phase, 1, postfix=pf)
+        return utils.StrFmt.floatString(self._moon.moon_phase * 100.0, 
+                                        1, postfix=pf)
     
     def isVisible(self, lfeature):
         '''

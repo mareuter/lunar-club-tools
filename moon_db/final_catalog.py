@@ -28,6 +28,7 @@ QUAD_CODE = 17
 SHAPEFILE_NAME = "MOON_nomenclature.shp"
 INITIAL_CAT = "initial_cat.txt"
 OUTPUT_DB = "moon.db"
+ANDROID_OUTPUT_DB = "moon_android.db"
 # Lunar club codes: 1 - Lunar, 2 - Lunar II, 3 - Both
 LUNAR_CODES = (1, 2, 3)
 LUNAR_CODE_NAMES = ("Lunar", "LunarII", "Both")
@@ -129,11 +130,30 @@ features_table.append("Lunar_Club_Type TEXT")
 # Create the database for the feature information
 import sqlite3
 
+def write_lunar_features(c, table, recs):
+    c.execute("DROP TABLE IF EXISTS Features")
+    c.execute("CREATE TABLE Features(%s)" % ",".join(table))
+    c.executemany("INSERT INTO Features VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                    recs)
+
 con = sqlite3.connect(OUTPUT_DB)
 con.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
 with con:
     cur = con.cursor()
-    cur.execute("DROP TABLE IF EXISTS Features")
-    cur.execute("CREATE TABLE Features(%s)" % ",".join(features_table))
-    cur.executemany("INSERT INTO Features VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                    records)
+    write_lunar_features(cur, features_table, records)
+    cur.close()
+
+# Write Android version of the database
+con = sqlite3.connect(ANDROID_OUTPUT_DB)
+con.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
+# Change title of feature table primary key
+features_table[0] = "_id INTEGER PRIMARY KEY"
+with con:
+    cur = con.cursor()
+    write_lunar_features(cur, features_table, records)
+    cur.execute("DROP TABLE IF EXISTS android_metadata")
+    cur.execute("CREATE TABLE android_metadata (locale TEXT DEFAULT 'en_US')")
+    cur.execute("INSERT INTO android_metadata VALUES('en_US')")
+    cur.close()
+
+

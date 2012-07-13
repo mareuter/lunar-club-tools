@@ -4,12 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     <TextView
-        android:id="@+id/pdate_label"
+        android:id="@+id/obsdate_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/date_label_text" />
     <TextView
-        android:id="@+id/time_label"
+        android:id="@+id/obstime_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/time_label_text" />

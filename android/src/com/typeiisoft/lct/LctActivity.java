@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TabHost;
 
 public class LctActivity extends TabActivity {
@@ -38,5 +41,21 @@ public class LctActivity extends TabActivity {
         tabHost.setCurrentTab(0);
     }
     
-   
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	super.onCreateOptionsMenu(menu);
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.menu, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+    	case R.id.about:
+    		startActivity(new Intent(this, About.class));
+    		return true;
+    	}
+    	return false;
+    }
 }

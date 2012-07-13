@@ -3,4 +3,11 @@
     <string name="app_name">LunarClubTools</string>
     <string name="date_label_text">Current Date:</string>
     <string name="time_label_text">Current Time:</string>
+    <string name="about_label">About</string>
+    <string name="about_shortcut">a</string>
+    <string name="about_title">About Lunar Club Tools</string>
+    <string name="about_text">\
+        Lunar Club Tools is a program for determing what lunar features 
+        are visible based on hte current selenographic colongitude.
+    </string>
 </resources>

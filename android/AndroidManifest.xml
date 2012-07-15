@@ -24,6 +24,9 @@
         <activity
             android:name=".LunarClubFeaturesActivity">
         </activity>
+                <activity
+            android:name=".LunarTwoFeaturesActivity">
+        </activity>
         <activity
             android:name=".About"
             android:label="@string/about_title"

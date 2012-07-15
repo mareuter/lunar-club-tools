@@ -4,12 +4,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
+import com.typeiisoft.lct.features.LunarFeature;
 
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * This class handles the interaction 
@@ -17,9 +21,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  *
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
+	private static final String TAG = "DataBaseHelper";
 	//The Android's default system path of your application database.
     private static String DB_PATH = "/data/data/com.typeiisoft.lct/databases/";
-    private static String DB_NAME = "moon";
+    private static String DB_NAME = "moon.db";
+    private static String DB_TABLE = "Features";
     private SQLiteDatabase myDataBase; 
     private final Context myContext;
  
@@ -43,6 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     	boolean dbExist = checkDataBase();
     	if (dbExist) {
     		// Do nothing - database already exist
+    		Log.i(TAG, "Database already exists.");
     	} else {
     		// By calling this method and empty database will be created into 
     		// the default system path of your application so we are going to 
@@ -53,6 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     		} catch (IOException e) {
         		throw new Error("Error copying database");
         	}
+        	Log.i(TAG, "Database copied successfully.");
     	}
     }
 
@@ -133,4 +141,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	// "return myDataBase.query(....)" so it'd be easy
     // to you to create adapters for your views.
 
+	public ArrayList<LunarFeature> getLunarClubFeatures() {
+		return new ArrayList<LunarFeature>();
+	}
 }

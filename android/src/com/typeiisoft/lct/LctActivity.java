@@ -1,8 +1,13 @@
 package com.typeiisoft.lct;
 
+import java.io.IOException;
+
+import com.typeiisoft.lct.db.DataBaseHelper;
+
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.SQLException;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,6 +50,23 @@ public class LctActivity extends TabActivity {
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
+        
+        // Copy the database
+        DataBaseHelper moonDB = new DataBaseHelper(this);
+        try {
+        	moonDB.createDataBase();
+        }
+        catch (IOException ioe) {
+        	throw new Error("Unable to open Moon info database.");
+        }
+        // Open the handle
+        try {
+        	moonDB.openDataBase();
+        }
+        catch (SQLException sqle) {
+        	throw sqle;
+        }
+        // DB should now be open and ready
     }
     
     @Override

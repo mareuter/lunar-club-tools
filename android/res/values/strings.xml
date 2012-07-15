@@ -10,4 +10,5 @@
         Lunar Club Tools is a program for determing what lunar features 
         are visible based on hte current selenographic colongitude.
     </string>
+    <string name="empty">No features currently visible!</string>
 </resources>

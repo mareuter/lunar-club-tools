@@ -33,13 +33,13 @@ public class LctActivity extends TabActivity {
 
         // Do the same for the other tabs
         intent = new Intent().setClass(this, LunarClubFeaturesActivity.class);
-        spec = tabHost.newTabSpec("lunar_club_features").setIndicator("Lunar Club Features",
+        spec = tabHost.newTabSpec("lunar_club_features").setIndicator("LC Features",
                           new StateListDrawable())
                       .setContent(intent);
         tabHost.addTab(spec);
         
         intent = new Intent().setClass(this, LunarTwoFeaturesActivity.class);
-        spec = tabHost.newTabSpec("lunar_two_features").setIndicator("Lunar II Features",
+        spec = tabHost.newTabSpec("lunar_two_features").setIndicator("LII Features",
                           new StateListDrawable())
                       .setContent(intent);
         tabHost.addTab(spec);

@@ -27,6 +27,23 @@ public class LctActivity extends TabActivity {
         TabHost.TabSpec spec;  // Reusable TabSpec for each tab
         Intent intent;  // Reusable Intent for each tab
 
+        // Copy the Moon information database
+        DataBaseHelper moonDB = new DataBaseHelper(this);
+        try {
+        	moonDB.createDataBase();
+        }
+        catch (IOException ioe) {
+        	throw new Error("Unable to open Moon info database.");
+        }
+        // Open the handle to the Moon information
+        try {
+        	moonDB.openDataBase();
+        }
+        catch (SQLException sqle) {
+        	throw sqle;
+        }
+        // DB should now be open and ready
+        
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent().setClass(this, MoonInfoActivity.class);
 
@@ -51,22 +68,6 @@ public class LctActivity extends TabActivity {
 
         tabHost.setCurrentTab(0);
         
-        // Copy the database
-        DataBaseHelper moonDB = new DataBaseHelper(this);
-        try {
-        	moonDB.createDataBase();
-        }
-        catch (IOException ioe) {
-        	throw new Error("Unable to open Moon info database.");
-        }
-        // Open the handle
-        try {
-        	moonDB.openDataBase();
-        }
-        catch (SQLException sqle) {
-        	throw sqle;
-        }
-        // DB should now be open and ready
     }
     
     @Override

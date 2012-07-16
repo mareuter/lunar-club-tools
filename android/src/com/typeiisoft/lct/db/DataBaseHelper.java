@@ -1,14 +1,18 @@
 package com.typeiisoft.lct.db;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.typeiisoft.lct.features.LunarFeature;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -28,6 +32,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String DB_TABLE = "Features";
     private SQLiteDatabase myDataBase; 
     private final Context myContext;
+    
+    private enum DbFields {
+    	ID, NAME, DIAMETER, LATITUDE, LONGITUDE, DELTA_LAT, DELTA_LONG, TYPE, 
+    	QUAD_NAME, QUAD_CODE, LUNAR_CODE, LUNAR_CLUB_TYPE;
+    }
  
     /**
      * Constructor
@@ -141,7 +150,52 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	// "return myDataBase.query(....)" so it'd be easy
     // to you to create adapters for your views.
 
-	public ArrayList<LunarFeature> getLunarClubFeatures() {
-		return new ArrayList<LunarFeature>();
+	/**
+	 * This function queries the database for Lunar Club features and returns 
+	 * that set of features.
+	 * @return : The list of Lunar Club feature.
+	 */
+	public List<LunarFeature> getLunarClubFeatures() {
+		List<LunarFeature> features = new ArrayList<LunarFeature>();
+		
+		if (this.checkDataBase()) {
+			this.openDataBase();
+			Cursor cursor = this.myDataBase.query(DB_TABLE, null, 
+					"Lunar_Code=? or Lunar_Code=?", 
+					new String[]{"Lunar", "Both"}, 
+					null, null, null);
+			
+			cursor.moveToFirst();
+			while (!cursor.isAfterLast()) {
+				LunarFeature feature = this.cursorToLunarFeature(cursor);
+				Log.i(TAG, feature.toString());
+				features.add(feature);
+				cursor.moveToNext();
+			}
+			cursor.close();
+		}
+		else {
+			Log.e(TAG, "Database has not been initialized!");
+		}
+		
+		Log.i(TAG, "Number of Lunar Club features = " + features.size());
+		return features;
+	}
+	
+	/**
+	 * This function takes the current DB row and creates a LunarFeature 
+	 * object from the information.
+	 * @param cur : The current DB row.
+	 * @return The LunarFeature corresponding to the information in the row.
+	 */
+	private LunarFeature cursorToLunarFeature(Cursor cur) {
+		return new LunarFeature(cur.getString(DbFields.NAME.ordinal()), 
+				cur.getDouble(DbFields.LATITUDE.ordinal()), 
+				cur.getDouble(DbFields.LONGITUDE.ordinal()), 
+				cur.getString(DbFields.TYPE.ordinal()), 
+				cur.getDouble(DbFields.DELTA_LAT.ordinal()), 
+				cur.getDouble(DbFields.DELTA_LONG.ordinal()), 
+				cur.getString(DbFields.LUNAR_CODE.ordinal()),
+				cur.getString(DbFields.LUNAR_CLUB_TYPE.ordinal()));
 	}
 }

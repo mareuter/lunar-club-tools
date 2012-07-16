@@ -112,4 +112,12 @@ public class LunarFeature {
 	public String getClubType() {
 		return this.clubType;
 	}
+	
+	public String toString() {
+		StringBuilder stb = new StringBuilder();
+		stb.append("Name = ").append(this.name).append("\n")
+		.append("Latitude = ").append(this.latitude).append("\n")
+		.append("Longitude = ").append(this.longitude).append("\n");
+		return stb.toString();
+	}
 }

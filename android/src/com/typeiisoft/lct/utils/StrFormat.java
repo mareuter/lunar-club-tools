@@ -59,9 +59,19 @@ public final class StrFormat {
 		return format.format(value);
 	}
 	
+	/**
+	 * This function takes a many word string and converts it to a multi-line 
+	 * string.
+	 * @param value : The string to format.
+	 * @return : The formatted string.
+	 */
 	public static String multiLine(String value) {
-		//String[] results = value.split('\s+');
-		return value;
+		String[] results = value.split("\\s+");
+		StringBuffer buf = new StringBuffer();
+		for (String result : results) {
+			buf.append(result).append(System.getProperty("line.separator"));
+		}
+		return buf.toString().trim();
 	}
 	
 	/**

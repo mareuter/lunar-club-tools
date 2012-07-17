@@ -3,6 +3,7 @@ package com.typeiisoft.lct.features;
 import java.util.ArrayList;
 
 import com.typeiisoft.lct.R;
+import com.typeiisoft.lct.utils.StrFormat;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,7 +27,7 @@ public class L2FeatureAdapter extends ArrayAdapter<LunarFeature> {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.i(TAG, "RowView for " + this.features.get(position).getName() + " starting.");
+		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " starting.");
 
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,10 +40,10 @@ public class L2FeatureAdapter extends ArrayAdapter<LunarFeature> {
 		featureTypeView.setText(this.features.get(position).getFeatureType());
 		
 		TextView featureLatView = (TextView) rowView.findViewById(R.id.feature_latitude);
-		String lat = Double.toString(this.features.get(position).getLatitude());
+		String lat = StrFormat.coordFormat("lat", this.features.get(position).getLatitude());
 		featureLatView.setText(lat);
 		
-		Log.i(TAG, "RowView for " + this.features.get(position).getName() + " done.");
+		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " done.");
 		return rowView;
 	}
 }

@@ -185,7 +185,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 			cursor.moveToFirst();
 			while (!cursor.isAfterLast()) {
 				LunarFeature feature = this.cursorToLunarFeature(cursor);
-				Log.i(TAG, feature.toString());
+				Log.d(TAG, feature.toString());
 				features.add(feature);
 				cursor.moveToNext();
 			}

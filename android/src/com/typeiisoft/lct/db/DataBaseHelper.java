@@ -34,7 +34,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final Context myContext;
     
     private enum DbFields {
-    	ID, NAME, DIAMETER, LATITUDE, LONGITUDE, DELTA_LAT, DELTA_LONG, TYPE, 
+    	_id, NAME, DIAMETER, LATITUDE, LONGITUDE, DELTA_LAT, DELTA_LONG, TYPE, 
     	QUAD_NAME, QUAD_CODE, LUNAR_CODE, LUNAR_CLUB_TYPE;
     }
  
@@ -151,20 +151,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // to you to create adapters for your views.
 
 	/**
-	 * This function queries the database for Lunar Club features and returns 
-	 * that set of features.
-	 * @return : The list of Lunar Club feature.
+	 * This function gets the Lunar Club feature list.
+	 * @return : The list of Lunar Club features.
 	 */
 	public List<LunarFeature> getLunarClubFeatures() {
+		return this.getFeatureList("Lunar");
+	}
+	
+	/**
+	 * This function gets the Lunar II Club feature list.
+	 * @return : The list of Lunar II Club features.
+	 */
+	public List<LunarFeature> getLunarTwoFeatures() {
+		return this.getFeatureList("LunarII");
+	}
+	
+	/**
+	 * This function handles querying the database, creating the list of 
+	 * lunar features and returning that list.
+	 * @param clubName : The observing club to get the feature list for.
+	 * @return : The given feature list.
+	 */
+	private List<LunarFeature> getFeatureList(String clubName) {
 		List<LunarFeature> features = new ArrayList<LunarFeature>();
-		
+
 		if (this.checkDataBase()) {
 			this.openDataBase();
 			Cursor cursor = this.myDataBase.query(DB_TABLE, null, 
 					"Lunar_Code=? or Lunar_Code=?", 
-					new String[]{"Lunar", "Both"}, 
-					null, null, null);
-			
+					new String[]{clubName, "Both"}, 
+					null, null, "Latitude DESC");
+
 			cursor.moveToFirst();
 			while (!cursor.isAfterLast()) {
 				LunarFeature feature = this.cursorToLunarFeature(cursor);
@@ -173,12 +190,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 				cursor.moveToNext();
 			}
 			cursor.close();
+			this.myDataBase.close();
 		}
 		else {
 			Log.e(TAG, "Database has not been initialized!");
 		}
-		
-		Log.i(TAG, "Number of Lunar Club features = " + features.size());
+
+		Log.i(TAG, "Number of " + clubName + " Club features = " + features.size());
 		return features;
 	}
 	

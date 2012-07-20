@@ -34,9 +34,11 @@ public class MoonInfo {
 	 */
 	public MoonInfo() {
 		if (!this.isInitialized) {
-			this.obsDate = new AstroDate(Calendar.DATE, Calendar.MONTH, 
-					Calendar.YEAR, Calendar.HOUR_OF_DAY, Calendar.MINUTE, 
-					Calendar.SECOND);
+			Calendar now = Calendar.getInstance();
+			this.obsDate = new AstroDate(now.get(Calendar.DATE), 
+					now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
+					now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
+					now.get(Calendar.SECOND));
 			this.lunar = new Lunar(this.getJulianCenturies());
 			this.obsInfo = new ObsInfo();
 			this.isInitialized = true;

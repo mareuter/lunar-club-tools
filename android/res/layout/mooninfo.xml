@@ -13,4 +13,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/time_label_text" />
+    <TextView
+        android:id="@+id/moon_age_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/moon_age_text" />
+    <TextView
+        android:id="@+id/moon_illum_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/moon_illum_text" />"
 </LinearLayout>

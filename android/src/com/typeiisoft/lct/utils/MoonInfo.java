@@ -1,8 +1,6 @@
 package com.typeiisoft.lct.utils;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import android.util.Log;
 
 import com.mhuss.AstroLib.Astro;
@@ -91,5 +89,14 @@ public class MoonInfo {
 			Log.e(TAG, "Lunar object is not initialized for calculating illumination.");
 		}
 		return StrFormat.formatDouble(illum * 100.0, 1) + "%";
+	}
+	
+	/**
+	 * This function returns the currently held observation date and time 
+	 * as separate strings.
+	 * @return : A date string and a time string.
+	 */
+	public String[] obsDateTime() {
+		return this.obsDate.toStringTZ().split(" ", 2);
 	}
 }

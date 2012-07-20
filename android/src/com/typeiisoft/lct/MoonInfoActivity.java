@@ -1,10 +1,9 @@
 package com.typeiisoft.lct;
 
-import java.util.GregorianCalendar;
+import com.typeiisoft.lct.utils.MoonInfo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.TextView;
 
 public class MoonInfoActivity extends Activity {
@@ -13,11 +12,12 @@ public class MoonInfoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mooninfo);
 		
-		String now = DateFormat.format("yyyy/MM/dd hh:mm:ss", 
-				new GregorianCalendar()).toString();
-		
-		this.appendText(R.id.obsdate_label, now.split(" ")[0]);
-		this.appendText(R.id.obstime_label, now.split(" ")[1]);
+		MoonInfo moonInfo = new MoonInfo();
+		String[] dateTime = moonInfo.obsDateTime();
+		this.appendText(R.id.obsdate_label, dateTime[0]);
+		this.appendText(R.id.obstime_label, dateTime[1]);
+		this.appendText(R.id.moon_age_label, moonInfo.age());
+		this.appendText(R.id.moon_illum_label, moonInfo.illumation());
 	}
 	
 	/**

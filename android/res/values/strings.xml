@@ -9,8 +9,8 @@
     <string name="about_shortcut">a</string>
     <string name="about_title">About Lunar Club Tools</string>
     <string name="about_text">\
-        Lunar Club Tools is a program for determing what lunar features 
-        are visible based on hte current selenographic colongitude.
+        <p>Lunar Club Tools is a program for determining what lunar features 
+        are visible based on the current selenographic colongitude.</p>
     </string>
     <string name="empty">No features currently visible!</string>
 </resources>

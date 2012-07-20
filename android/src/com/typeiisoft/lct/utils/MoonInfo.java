@@ -72,7 +72,7 @@ public class MoonInfo {
 	 */
 	public String age() {
 		double currentAge = LunarCalc.ageOfMoonInDays(this.obsDate.jd());
-		return StrFormat.formatDouble(currentAge, 2);
+		return StrFormat.formatDouble(currentAge, 2) + " days";
 	}
 	
 	/**

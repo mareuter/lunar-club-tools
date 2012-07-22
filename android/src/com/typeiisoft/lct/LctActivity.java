@@ -35,6 +35,7 @@ public class LctActivity extends TabActivity {
         catch (IOException ioe) {
         	throw new Error("Unable to open Moon info database.");
         }
+        /**
         // Open the handle to the Moon information
         try {
         	moonDB.openDataBase();
@@ -43,7 +44,7 @@ public class LctActivity extends TabActivity {
         	throw sqle;
         }
         // DB should now be open and ready
-        
+        */
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent().setClass(this, MoonInfoActivity.class);
 
@@ -67,7 +68,7 @@ public class LctActivity extends TabActivity {
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
-        
+        //moonDB.close();
     }
     
     @Override

@@ -1,5 +1,7 @@
 package com.typeiisoft.lct.features;
 
+import com.typeiisoft.lct.utils.StrFormat;
+
 /**
  * This class is responsible for containing the relevant information for 
  * a given lunar feature.
@@ -113,11 +115,18 @@ public class LunarFeature {
 		return this.clubType;
 	}
 	
+	/**
+	 * This function creates a string representation of the feature object.
+	 * @return : The feature's string representation.
+	 */
 	public String toString() {
 		StringBuilder stb = new StringBuilder();
-		stb.append("Name = ").append(this.name).append("\n")
-		.append("Latitude = ").append(this.latitude).append("\n")
-		.append("Longitude = ").append(this.longitude).append("\n");
+		stb.append("Name: ").append(this.name).append("\n")
+		.append("Type: ").append(this.featureType).append("\n")
+		.append("Latitude: ").append(StrFormat.coordFormat("lat", 
+				this.latitude)).append("\n")
+		.append("Longitude: ").append(StrFormat.coordFormat("lon", 
+				this.longitude)).append("\n");
 		return stb.toString();
 	}
 }

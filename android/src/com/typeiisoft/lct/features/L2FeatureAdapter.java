@@ -35,14 +35,14 @@ public class L2FeatureAdapter extends ArrayAdapter<LunarFeature> {
 		
 		TextView featureNameView = (TextView) rowView.findViewById(R.id.feature_name);
 		featureNameView.setText(this.features.get(position).getName());
-		
+		/**
 		TextView featureTypeView = (TextView) rowView.findViewById(R.id.feature_type);
 		featureTypeView.setText(this.features.get(position).getFeatureType());
 		
 		TextView featureLatView = (TextView) rowView.findViewById(R.id.feature_latitude);
 		String lat = StrFormat.coordFormat("lat", this.features.get(position).getLatitude());
 		featureLatView.setText(lat);
-		
+		*/
 		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " done.");
 		return rowView;
 	}

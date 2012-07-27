@@ -18,6 +18,7 @@ public class MoonInfoActivity extends Activity {
 		this.appendText(R.id.obstime_label, dateTime[1]);
 		this.appendText(R.id.moon_age_label, moonInfo.age());
 		this.appendText(R.id.moon_illum_label, moonInfo.illumation());
+		this.appendText(R.id.moon_colong_label, moonInfo.colong());
 	}
 	
 	/**

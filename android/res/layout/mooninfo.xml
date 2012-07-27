@@ -22,5 +22,10 @@
         android:id="@+id/moon_illum_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/moon_illum_text" />"
+        android:text="@string/moon_illum_text" />
+    <TextView
+        android:id="@+id/moon_colong_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/moon_colong_text" />
 </LinearLayout>

@@ -101,4 +101,15 @@ public class MoonInfo {
 	public String[] obsDateTime() {
 		return this.obsDate.toStringTZ().split(" ", 2);
 	}
+	
+	/**
+	 * This function returns the selenographic colongitude for the current 
+	 * date and time.
+	 * @return : The selenographic colongitude as a DMS string.
+	 */
+	public String colong() {
+		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+		Log.i(TAG, "Colongitude calculated = " + Double.toString(colong));
+		return StrFormat.dmsFromDd(colong, false);
+	}
 }

@@ -2,13 +2,20 @@ package com.typeiisoft.lct.utils;
 
 import java.text.DecimalFormat;
 
+import com.mhuss.AstroLib.Astro;
+
 /**
- * This class is designed to provide varioud string formatting methods. It 
+ * This class is designed to provide various string formatting methods. It 
  * should only be used via the static methods as instantiation is not allowed.
  * @author Michael Reuter
  *
  */
 public final class StrFormat {
+	
+	/** Constant for the unicode degree symbol. */
+	public static final String DEGREE_SYMBOL = "\u00b0";
+	/** Constanst for logging. */
+	public static final String TAG = "StrFormat";
 	
 	/**
 	 * This function formats a latitude or longitude value into one with 
@@ -38,7 +45,7 @@ public final class StrFormat {
 		String dbl_fmt = StrFormat.formatDouble(Math.abs(coord), 2);
 		StringBuffer buf = new StringBuffer(dbl_fmt);
 		// This is the degree symbol in unicode.
-		buf.append("\u00b0 ");
+		buf.append(StrFormat.DEGREE_SYMBOL + " ");
 		buf.append(dir);
 		return buf.toString();
 	}
@@ -72,6 +79,38 @@ public final class StrFormat {
 			buf.append(result).append(System.getProperty("line.separator"));
 		}
 		return buf.toString().trim();
+	}
+	
+	/**
+	 * This function converts decimal degrees into degrees, minutes, seconds 
+	 * (DMS) and returns the corresponding string decorated with degree marks.
+	 * @param decdeg : The value to convert.
+	 * @param useFloatSec : If true, use decimal seconds.
+	 * @return : The DMS formatted string.
+	 */
+	public static String dmsFromDd(double decdeg, boolean useFloatSec) {
+		String zeroPad = "%02d";
+		int degrees = (int)decdeg;
+		decdeg -= degrees;
+		decdeg *= Astro.MINUTES_PER_HOUR;
+		int minutes = (int)(decdeg);
+		decdeg -= minutes;
+		decdeg *= Astro.SECONDS_PER_MINUTE;
+		double seconds = decdeg;
+		String secStr = "";
+		if (useFloatSec) {
+			secStr = StrFormat.formatDouble(seconds, 1);
+		}
+		else {
+			secStr = String.format(zeroPad, (int)seconds);
+		}
+		
+		StringBuffer buf = new StringBuffer();
+		buf.append(Integer.toString(degrees));
+		buf.append(StrFormat.DEGREE_SYMBOL + " ");
+		buf.append(String.format(zeroPad, minutes)).append("' ");
+		buf.append(secStr).append("\"");
+		return buf.toString();
 	}
 	
 	/**

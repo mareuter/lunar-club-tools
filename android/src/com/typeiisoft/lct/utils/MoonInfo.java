@@ -9,6 +9,7 @@ import com.mhuss.AstroLib.Lunar;
 import com.mhuss.AstroLib.LunarCalc;
 import com.mhuss.AstroLib.NoInitException;
 import com.mhuss.AstroLib.ObsInfo;
+import com.typeiisoft.lct.features.LunarFeature;
 
 /**
  * This class handles calling calculations and returning various bits of 
@@ -28,6 +29,23 @@ public class MoonInfo {
 	private Lunar lunar;
 	/** Object that holds the observing site information. */
 	private ObsInfo obsInfo;
+	
+	private enum Phase {
+		NM, WAXING_CRESENT, FQ, WAXING_GIBBOUS, FM, WANING_GIBBOUS, TQ,
+		WANING_CRESENT;
+	}
+	
+	private String[] phaseNames = {"New Moon", "Waxing Cresent", 
+			"First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous",
+			"Third Quarter", "Waning Cresent"};
+	
+	private enum TimeOfDay {
+		MORNING, EVENING;
+	}
+	
+	private static final double FEATURE_CUTOFF = 15D;
+	
+	private String[] noCutoffType = {"Mare", "Oceanus"};
 	
 	/**
 	 * This function is the class constructor.
@@ -111,5 +129,89 @@ public class MoonInfo {
 		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
 		Log.i(TAG, "Colongitude calculated = " + Double.toString(colong));
 		return StrFormat.dmsFromDd(colong, false);
+	}
+	
+	public String phase() {
+		return this.phaseNames[this.getPhase().ordinal()];
+	}
+	
+	public boolean isVisible(LunarFeature feature) {
+		double selcoLong = this.colongToLong();
+		int curTod = this.getTimeOfDay().ordinal();
+		
+		double minLon = feature.getLongitude() - feature.getDeltaLongitude() / 2.0;
+		double maxLon = feature.getLongitude() + feature.getDeltaLongitude() / 2.0;
+		
+		// Switch things around
+		if (minLon > maxLon) {
+			double temp = minLon;
+			minLon = maxLon;
+			maxLon = temp;
+		}
+		
+		boolean isVisible = false;
+		double latitudeScaling = Math.cos(Math.toRadians(feature.getLatitude()));
+		double cutoff = this.FEATURE_CUTOFF / latitudeScaling;
+		
+		return isVisible;
+	}
+	
+	private Phase getPhase() {
+		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+		if (270.0 == colong) {
+			return Phase.NM;
+		}
+		else if (colong > 270.0 && colong < 360.0) {
+			return Phase.WAXING_CRESENT;
+		}
+		else if (0.0 == colong || 360.0 == colong) {
+			return Phase.FQ;
+		}
+		else if (colong > 0.0 && colong < 90.0) {
+			return Phase.WAXING_GIBBOUS;
+		}
+		else if (90.0 == colong) {
+			return Phase.FM;
+		}
+		else if (colong > 90.0 && colong < 180.0) {
+			return Phase.WANING_GIBBOUS;
+		}
+		else if (180.0 == colong) {
+			return Phase.TQ;
+		}
+		else if (colong > 180.0 && colong < 270.0) {
+			return Phase.WANING_CRESENT;
+		}
+		else {
+			return Phase.NM;
+		}
+	}
+	
+	private TimeOfDay getTimeOfDay() {
+		int phase = this.getPhase().ordinal();
+		if (phase >= Phase.NM.ordinal() && 
+				phase <= Phase.WAXING_GIBBOUS.ordinal()) {
+			return TimeOfDay.MORNING;
+		}
+		else {
+			return TimeOfDay.EVENING;
+		}
+	}
+	
+	private double colongToLong() {
+		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+		int phase = this.getPhase().ordinal();
+		if (Phase.NM.ordinal() == phase || Phase.WAXING_CRESENT.ordinal() == phase) {
+			return 360.0 - colong;
+		}
+		else if (Phase.FQ.ordinal() == phase || Phase.WAXING_GIBBOUS.ordinal() == phase) {
+			return -1.0 * colong;
+		}
+		else if (Phase.FM.ordinal() == phase || Phase.WANING_GIBBOUS.ordinal() == phase) {
+			return 180.0 - colong;
+		}
+		else {
+			return -1.0 * (colong - 180.0);
+		}
 	}
 }

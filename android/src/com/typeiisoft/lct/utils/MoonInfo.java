@@ -131,10 +131,27 @@ public class MoonInfo {
 		return StrFormat.dmsFromDd(colong, false);
 	}
 	
+	/**
+	 * This function returns the phase of the Moon as a string.
+	 * @return : The Moon phase as a string.
+	 */
 	public String phase() {
 		return this.phaseNames[this.getPhase().ordinal()];
 	}
 	
+	/**
+	 * This function determines if the given lunar feature is visible based 
+     * on the current selenographic colongitude (SELCO). For most features 
+     * near the equator, from NM to FM once the SELCO recedes about 15 
+     * degrees, the shadow relief makes it tough to observe. Conversely, the 
+     * SELCO needs to be within 15 degrees of the feature from FM to NM. 
+     * Features closer to the poles are visible much longer after the 15 
+     * degree cutoff. A 1/cos(latitude) will be applied to the cutoff. 
+     * Mare and Oceanus are special exceptions and once FULLY visible they are 
+     * always visible.
+	 * @param feature : The lunar feature to check for visibility.
+	 * @return : True is the feature is visible.
+	 */
 	public boolean isVisible(LunarFeature feature) {
 		double selcoLong = this.colongToLong();
 		int curTod = this.getTimeOfDay().ordinal();
@@ -151,11 +168,52 @@ public class MoonInfo {
 		
 		boolean isVisible = false;
 		double latitudeScaling = Math.cos(Math.toRadians(feature.getLatitude()));
-		double cutoff = this.FEATURE_CUTOFF / latitudeScaling;
+		double cutoff = MoonInfo.FEATURE_CUTOFF / latitudeScaling;
+		
+		double lonCutoff = 0.0;
+		if (TimeOfDay.MORNING.ordinal() == curTod) {
+			// Minimum longitude for morning visibility
+			lonCutoff = minLon - cutoff;
+			if (this.noCutoffFeature(feature.getFeatureType())) {
+				isVisible = selcoLong <= minLon;
+			}
+			else {
+				isVisible = (selcoLong >= lonCutoff || selcoLong <= minLon);
+			}
+		}
+		if (TimeOfDay.EVENING.ordinal() == curTod) {
+			// Maximum longitude for evening visibility
+			lonCutoff = maxLon + cutoff;
+			if (this.noCutoffFeature(feature.getFeatureType())) {
+				isVisible = maxLon <= selcoLong;
+			}
+			else {
+				isVisible = (selcoLong >= maxLon || selcoLong <= lonCutoff);
+			}
+		}
 		
 		return isVisible;
 	}
 	
+	/**
+	 * This function checks a given lunar feature type against the list of lunar 
+	 * feature types that have no cutoff.
+	 * @param type : The string containing the lunar feature type.
+	 * @return : True is the incoming feature type is in no cutoff list.
+	 */
+	private boolean noCutoffFeature(String type) {
+		for (String s : this.noCutoffType) {
+			if (s.toLowerCase() == type.toLowerCase()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * This function returns the moon phase according to standard nomenclature.
+	 * @return : The moon phase as an enum value.
+	 */
 	private Phase getPhase() {
 		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
 		if (270.0 == colong) {
@@ -187,6 +245,12 @@ public class MoonInfo {
 		}
 	}
 	
+	/**
+	 * This function determines the current time of day on the moon. In 
+     * otherwords, if the sun is rising on the moon it is morning or if the 
+     * sun is setting on the moon it is evening.
+	 * @return : The current time of day.
+	 */
 	private TimeOfDay getTimeOfDay() {
 		int phase = this.getPhase().ordinal();
 		if (phase >= Phase.NM.ordinal() && 
@@ -198,6 +262,11 @@ public class MoonInfo {
 		}
 	}
 	
+	/**
+	 * This function calculates the conversion between the selenographic  
+     * colongitude and actual lunar longitude.
+	 * @return : The lunar longitude for the current selenographic colongitude.
+	 */
 	private double colongToLong() {
 		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
 		int phase = this.getPhase().ordinal();

@@ -284,4 +284,18 @@ public class MoonInfo {
 			return -1.0 * (colong - 180.0);
 		}
 	}
+	
+	/**
+	 * This function creates the string representation of the object.
+	 * @return : The current string representation.
+	 */
+	public String toString() {
+		StringBuffer buf = new StringBuffer();
+		String[] tmp = this.obsDateTime();
+		buf.append("Date: ").append(tmp[0]).append(System.getProperty("line.separator"));
+		buf.append("Time: ").append(tmp[1]).append(System.getProperty("line.separator"));
+		buf.append("Julian Date: ").append(Double.toString(this.obsDate.jd()));
+		buf.append(System.getProperty("line.separator"));
+		return buf.toString();
+	}
 }

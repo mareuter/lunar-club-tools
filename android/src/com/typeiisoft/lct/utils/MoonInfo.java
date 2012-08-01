@@ -29,6 +29,7 @@ public class MoonInfo {
 	private Lunar lunar;
 	/** Object that holds the observing site information. */
 	private ObsInfo obsInfo;
+	private double colongitude;
 	/** Enum containing the lunar phases for integer comparison. */
 	private enum Phase {
 		NM, WAXING_CRESENT, FQ, WAXING_GIBBOUS, FM, WANING_GIBBOUS, TQ,
@@ -49,19 +50,34 @@ public class MoonInfo {
 	private String[] noCutoffType = {"Mare", "Oceanus"};
 	
 	/**
-	 * This function is the class constructor.
+	 * This function is the parameter-less class constructor.
 	 */
 	public MoonInfo() {
-		if (!this.isInitialized) {
-			Calendar now = Calendar.getInstance();
-			this.obsDate = new AstroDate(now.get(Calendar.DATE), 
-					now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
-					now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
-					now.get(Calendar.SECOND));
-			this.lunar = new Lunar(this.getJulianCenturies());
-			this.obsInfo = new ObsInfo();
-			this.isInitialized = true;
-		}
+		Calendar now = Calendar.getInstance();
+		this.obsDate = new AstroDate(now.get(Calendar.DATE), 
+				now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
+				now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
+				now.get(Calendar.SECOND));
+		this.initialize();
+	}
+	
+	/**
+	 * This function is the parametered class constructor.
+	 * @param datetime : Array of six values of the current date and time.
+	 */
+	public MoonInfo(int[] datetime) {
+		this.obsDate = new AstroDate(datetime[0], datetime[1], datetime[2],
+				datetime[3], datetime[4], datetime[5]);
+		this.initialize();
+	}
+	
+	/**
+	 * This function consolidates some of the common setup.
+	 */
+	private void initialize() {
+		this.lunar = new Lunar(this.getJulianCenturies());
+		this.obsInfo = new ObsInfo();
+		this.colongitude = Double.MAX_VALUE;
 	}
 	
 	/**
@@ -127,9 +143,9 @@ public class MoonInfo {
 	 * @return : The selenographic colongitude as a DMS string.
 	 */
 	public String colong() {
-		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
-		Log.i(TAG, "Colongitude calculated = " + Double.toString(colong));
-		return StrFormat.dmsFromDd(colong, false);
+		this.getColongitude();
+		Log.i(TAG, "Colongitude calculated = " + Double.toString(this.colongitude));
+		return StrFormat.dmsFromDd(this.colongitude, false);
 	}
 	
 	/**
@@ -154,8 +170,11 @@ public class MoonInfo {
 	 * @return : True is the feature is visible.
 	 */
 	public boolean isVisible(LunarFeature feature) {
+		Log.i(TAG, feature.toString());
 		double selcoLong = this.colongToLong();
+		Log.i(TAG, "SelcoLong = " + Double.toString(selcoLong));
 		int curTod = this.getTimeOfDay().ordinal();
+		Log.i(TAG, "CurTod = " + Integer.toString(curTod));
 		
 		double minLon = feature.getLongitude() - feature.getDeltaLongitude() / 2.0;
 		double maxLon = feature.getLongitude() + feature.getDeltaLongitude() / 2.0;
@@ -168,7 +187,7 @@ public class MoonInfo {
 		}
 		
 		boolean isVisible = false;
-		double latitudeScaling = Math.cos(Math.toRadians(feature.getLatitude()));
+		double latitudeScaling = Math.cos(Math.toRadians(Math.abs(feature.getLatitude())));
 		double cutoff = MoonInfo.FEATURE_CUTOFF / latitudeScaling;
 		
 		double lonCutoff = 0.0;
@@ -179,7 +198,7 @@ public class MoonInfo {
 				isVisible = selcoLong <= minLon;
 			}
 			else {
-				isVisible = (selcoLong >= lonCutoff || selcoLong <= minLon);
+				isVisible = (selcoLong >= lonCutoff && selcoLong <= minLon);
 			}
 		}
 		if (TimeOfDay.EVENING.ordinal() == curTod) {
@@ -189,11 +208,22 @@ public class MoonInfo {
 				isVisible = maxLon <= selcoLong;
 			}
 			else {
-				isVisible = (selcoLong >= maxLon || selcoLong <= lonCutoff);
+				isVisible = (selcoLong >= maxLon && selcoLong <= lonCutoff);
 			}
 		}
 		
 		return isVisible;
+	}
+
+	/**
+	 * This function is to set the selenographic colongitude once for a given 
+	 * instance. This will cut down on the number of calculations done by the 
+	 * library call.
+	 */
+	private void getColongitude() {
+		if (Double.MAX_VALUE == this.colongitude) {
+			this.colongitude = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+		}
 	}
 	
 	/**
@@ -216,29 +246,29 @@ public class MoonInfo {
 	 * @return : The moon phase as an enum value.
 	 */
 	private Phase getPhase() {
-		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
-		if (270.0 == colong) {
+		this.getColongitude();
+		if (270.0 == this.colongitude) {
 			return Phase.NM;
 		}
-		else if (colong > 270.0 && colong < 360.0) {
+		else if (this.colongitude > 270.0 && this.colongitude < 360.0) {
 			return Phase.WAXING_CRESENT;
 		}
-		else if (0.0 == colong || 360.0 == colong) {
+		else if (0.0 == this.colongitude || 360.0 == this.colongitude) {
 			return Phase.FQ;
 		}
-		else if (colong > 0.0 && colong < 90.0) {
+		else if (this.colongitude > 0.0 && this.colongitude < 90.0) {
 			return Phase.WAXING_GIBBOUS;
 		}
-		else if (90.0 == colong) {
+		else if (90.0 == this.colongitude) {
 			return Phase.FM;
 		}
-		else if (colong > 90.0 && colong < 180.0) {
+		else if (this.colongitude > 90.0 && this.colongitude < 180.0) {
 			return Phase.WANING_GIBBOUS;
 		}
-		else if (180.0 == colong) {
+		else if (180.0 == this.colongitude) {
 			return Phase.TQ;
 		}
-		else if (colong > 180.0 && colong < 270.0) {
+		else if (this.colongitude > 180.0 && this.colongitude < 270.0) {
 			return Phase.WANING_CRESENT;
 		}
 		else {
@@ -269,19 +299,19 @@ public class MoonInfo {
 	 * @return : The lunar longitude for the current selenographic colongitude.
 	 */
 	private double colongToLong() {
-		double colong = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+		this.getColongitude();
 		int phase = this.getPhase().ordinal();
 		if (Phase.NM.ordinal() == phase || Phase.WAXING_CRESENT.ordinal() == phase) {
-			return 360.0 - colong;
+			return 360.0 - this.colongitude;
 		}
 		else if (Phase.FQ.ordinal() == phase || Phase.WAXING_GIBBOUS.ordinal() == phase) {
-			return -1.0 * colong;
+			return -1.0 * this.colongitude;
 		}
 		else if (Phase.FM.ordinal() == phase || Phase.WANING_GIBBOUS.ordinal() == phase) {
-			return 180.0 - colong;
+			return 180.0 - this.colongitude;
 		}
 		else {
-			return -1.0 * (colong - 180.0);
+			return -1.0 * (this.colongitude - 180.0);
 		}
 	}
 	

@@ -32,9 +32,9 @@ public class LctActivity extends TabActivity {
         Intent intent;  // Reusable Intent for each tab
 
         // Set the observation date and time into the shared preferences.
-    	appPrefs = new AppPreferences(this.getApplicationContext());
+    	this.appPrefs = new AppPreferences(this.getApplicationContext());
 		Calendar now = Calendar.getInstance();
-		appPrefs.setDateTime(now.get(Calendar.DATE), 
+		this.appPrefs.setDateTime(now.get(Calendar.DATE), 
 				now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
 				now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
 				now.get(Calendar.SECOND));

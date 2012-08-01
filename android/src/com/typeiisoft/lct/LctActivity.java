@@ -1,13 +1,14 @@
 package com.typeiisoft.lct;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import com.typeiisoft.lct.db.DataBaseHelper;
+import com.typeiisoft.lct.utils.AppPreferences;
 
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.SQLException;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +17,9 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 
 public class LctActivity extends TabActivity {
+	/** The application prefences object. */
+	private AppPreferences appPrefs;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,14 @@ public class LctActivity extends TabActivity {
         TabHost tabHost = getTabHost();  // The activity TabHost
         TabHost.TabSpec spec;  // Reusable TabSpec for each tab
         Intent intent;  // Reusable Intent for each tab
+
+        // Set the observation date and time into the shared preferences.
+    	appPrefs = new AppPreferences(this.getApplicationContext());
+		Calendar now = Calendar.getInstance();
+		appPrefs.setDateTime(now.get(Calendar.DATE), 
+				now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
+				now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
+				now.get(Calendar.SECOND));
 
         // Copy the Moon information database
         DataBaseHelper moonDB = new DataBaseHelper(this);

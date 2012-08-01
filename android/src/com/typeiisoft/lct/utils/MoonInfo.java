@@ -23,12 +23,11 @@ public class MoonInfo {
 	private static final String TAG = "MoonInfo";
 	/** The current date and time for all observation information. */
 	private AstroDate obsDate;
-	/** Flag to stop objects from being created unnecessarily */
-	private boolean isInitialized = false;
 	/** Object that does most of the calculations. */
 	private Lunar lunar;
 	/** Object that holds the observing site information. */
 	private ObsInfo obsInfo;
+	/** Holder for the selenographic colongitude. */
 	private double colongitude;
 	/** Enum containing the lunar phases for integer comparison. */
 	private enum Phase {
@@ -39,7 +38,6 @@ public class MoonInfo {
 	private String[] phaseNames = {"New Moon", "Waxing Cresent", 
 			"First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous",
 			"Third Quarter", "Waning Cresent"};
-	
 	/** Enum containing the time of lunar day for integer comparison. */
 	private enum TimeOfDay {
 		MORNING, EVENING;
@@ -170,7 +168,6 @@ public class MoonInfo {
 	 * @return : True is the feature is visible.
 	 */
 	public boolean isVisible(LunarFeature feature) {
-		Log.i(TAG, feature.toString());
 		double selcoLong = this.colongToLong();
 		Log.i(TAG, "SelcoLong = " + Double.toString(selcoLong));
 		int curTod = this.getTimeOfDay().ordinal();
@@ -179,7 +176,7 @@ public class MoonInfo {
 		double minLon = feature.getLongitude() - feature.getDeltaLongitude() / 2.0;
 		double maxLon = feature.getLongitude() + feature.getDeltaLongitude() / 2.0;
 		
-		// Switch things around
+		// Switch things around if necessary
 		if (minLon > maxLon) {
 			double temp = minLon;
 			minLon = maxLon;
@@ -195,6 +192,7 @@ public class MoonInfo {
 			// Minimum longitude for morning visibility
 			lonCutoff = minLon - cutoff;
 			if (this.noCutoffFeature(feature.getFeatureType())) {
+				
 				isVisible = selcoLong <= minLon;
 			}
 			else {
@@ -234,7 +232,7 @@ public class MoonInfo {
 	 */
 	private boolean noCutoffFeature(String type) {
 		for (String s : this.noCutoffType) {
-			if (s.toLowerCase() == type.toLowerCase()) {
+			if (s.equalsIgnoreCase(type)) {
 				return true;
 			}
 		}

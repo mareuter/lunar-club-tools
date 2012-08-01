@@ -1,15 +1,15 @@
 package com.typeiisoft.lct.db;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.typeiisoft.lct.features.LunarFeature;
+import com.typeiisoft.lct.utils.AppPreferences;
+import com.typeiisoft.lct.utils.MoonInfo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -32,7 +32,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String DB_TABLE = "Features";
     private SQLiteDatabase myDataBase; 
     private final Context myContext;
-    
+    /** Enum that holds the database fields for integer comparison. */
     private enum DbFields {
     	_id, NAME, DIAMETER, LATITUDE, LONGITUDE, DELTA_LAT, DELTA_LONG, TYPE, 
     	QUAD_NAME, QUAD_CODE, LUNAR_CODE, LUNAR_CLUB_TYPE;
@@ -173,6 +173,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 * @return : The given feature list.
 	 */
 	private List<LunarFeature> getFeatureList(String clubName) {
+		AppPreferences appPrefs = new AppPreferences(this.myContext);
+		MoonInfo moonInfo = new MoonInfo(appPrefs.getDateTime());
+		Log.i(TAG, "MoonInfo: " + moonInfo.toString());
+		
 		List<LunarFeature> features = new ArrayList<LunarFeature>();
 
 		if (this.checkDataBase()) {
@@ -185,8 +189,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 			cursor.moveToFirst();
 			while (!cursor.isAfterLast()) {
 				LunarFeature feature = this.cursorToLunarFeature(cursor);
-				Log.d(TAG, feature.toString());
-				features.add(feature);
+				if (moonInfo.isVisible(feature)) {
+					Log.d(TAG, feature.toString());
+					features.add(feature);
+				}
 				cursor.moveToNext();
 			}
 			cursor.close();

@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import com.typeiisoft.lct.features.L2Comparator;
 import com.typeiisoft.lct.features.LunarFeature;
 import com.typeiisoft.lct.utils.AppPreferences;
 import com.typeiisoft.lct.utils.MoonInfo;
@@ -163,7 +165,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 * @return : The list of Lunar II Club features.
 	 */
 	public List<LunarFeature> getLunarTwoFeatures() {
-		return this.getFeatureList("LunarII");
+		List<LunarFeature> tmp = this.getFeatureList("LunarII");
+		Collections.sort(tmp, new L2Comparator());
+		return tmp;
 	}
 	
 	/**

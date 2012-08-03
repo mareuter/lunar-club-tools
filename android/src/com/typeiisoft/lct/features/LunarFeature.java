@@ -22,9 +22,9 @@ public class LunarFeature {
 	private double deltaLatitude;
 	/** Width of the lunar feature in longitude in decimal degrees. */
 	private double deltaLongitude;
-	/** Target type name for Lunar Club */
+	/** Observing club lunar feature belongs to. */	
 	private String codeName;
-	/** Observing club lunar feature belongs to. */
+	/** Target type name for Lunar Club */
 	private String clubType;
 	
 	/**
@@ -35,8 +35,8 @@ public class LunarFeature {
 	 * @param featureType : description of feature
 	 * @param deltaLatitude : latitude width of feature
 	 * @param deltaLongitude : longitude width of feature
-	 * @param codeName : Lunar Club target type
-	 * @param clubType : club list for feature
+	 * @param codeName : Club list for feature
+	 * @param clubType : Lunar Club target type
 	 */
 	public LunarFeature(String name, double latitude, double longitude,
 			String featureType, double deltaLatitude, double deltaLongitude,
@@ -100,16 +100,16 @@ public class LunarFeature {
 	}
 	
 	/**
-	 * Getter for the Lunar Club target type name. Can be None.
-	 * @return : the Lunar Club target type name
+	 * Getter for the observing club list name. Can be Lunar, LunarII or Both
+	 * @return : the observing cub list name
 	 */
 	public String getCodeName() {
 		return this.codeName;
 	}
-	
+
 	/**
-	 * Getter for the observing club list name. Can be Lunar, LunarII or Both
-	 * @return : the observing cub list name
+	 * Getter for the Lunar Club target type name. Can be None.
+	 * @return : the Lunar Club target type name
 	 */
 	public String getClubType() {
 		return this.clubType;

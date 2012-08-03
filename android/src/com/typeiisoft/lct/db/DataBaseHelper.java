@@ -153,11 +153,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // to you to create adapters for your views.
 
 	/**
-	 * This function gets the Lunar Club feature list.
-	 * @return : The list of Lunar Club features.
+	 * This function gets the Lunar Club feature list as a set of three 
+	 * lists based on the target type.
+	 * @return : The list of lists of Lunar Club features.
 	 */
-	public List<LunarFeature> getLunarClubFeatures() {
-		return this.getFeatureList("Lunar");
+	public ArrayList<ArrayList<LunarFeature>> getLunarClubFeatures() {
+		ArrayList<LunarFeature> tmp = (ArrayList<LunarFeature>)this.getFeatureList("Lunar");
+		
+		// Setup three lists for the target categories.
+		ArrayList<LunarFeature> nakedEye = new ArrayList<LunarFeature>();
+		ArrayList<LunarFeature> binocular = new ArrayList<LunarFeature>();
+		ArrayList<LunarFeature> telescopic = new ArrayList<LunarFeature>();
+		String targetType;
+		for (LunarFeature l : tmp) {
+			targetType = l.getClubType();
+			Log.i(TAG, "Target type = " + targetType);
+			if (targetType.equals(new String("Naked Eye"))) {
+				nakedEye.add(l);
+			}
+			if (targetType.equals(new String("Binocular"))) {
+				binocular.add(l);
+			}
+			if (targetType.equals(new String("Telescopic"))) {
+				telescopic.add(l);
+			}
+		}
+		
+		Log.i(TAG, "Naked Eye = " + nakedEye.size());
+		Log.i(TAG, "Binocular = " + binocular.size());
+		Log.i(TAG, "Telescopic = " + telescopic.size());
+		
+		Collections.sort(nakedEye, new L2Comparator());
+		Collections.sort(binocular, new L2Comparator());
+		Collections.sort(telescopic, new L2Comparator());
+		
+		ArrayList<ArrayList<LunarFeature>> features = new ArrayList<ArrayList<LunarFeature>>();
+		features.add(nakedEye);
+		features.add(binocular);
+		features.add(telescopic);
+		return features;
 	}
 	
 	/**

@@ -9,7 +9,7 @@ import java.util.Comparator;
  * @author Michael Reuter
  *
  */
-public class L2Comparator implements Comparator<LunarFeature> {
+public class FeatureComparator implements Comparator<LunarFeature> {
 
 	@Override
 	public int compare(LunarFeature arg0, LunarFeature arg1) {

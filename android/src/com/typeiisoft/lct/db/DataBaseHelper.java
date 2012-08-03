@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.typeiisoft.lct.features.L2Comparator;
+import com.typeiisoft.lct.features.FeatureComparator;
 import com.typeiisoft.lct.features.LunarFeature;
 import com.typeiisoft.lct.utils.AppPreferences;
 import com.typeiisoft.lct.utils.MoonInfo;
@@ -183,9 +183,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		Log.i(TAG, "Binocular = " + binocular.size());
 		Log.i(TAG, "Telescopic = " + telescopic.size());
 		
-		Collections.sort(nakedEye, new L2Comparator());
-		Collections.sort(binocular, new L2Comparator());
-		Collections.sort(telescopic, new L2Comparator());
+		Collections.sort(nakedEye, new FeatureComparator());
+		Collections.sort(binocular, new FeatureComparator());
+		Collections.sort(telescopic, new FeatureComparator());
 		
 		ArrayList<ArrayList<LunarFeature>> features = new ArrayList<ArrayList<LunarFeature>>();
 		features.add(nakedEye);
@@ -200,7 +200,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 */
 	public List<LunarFeature> getLunarTwoFeatures() {
 		List<LunarFeature> tmp = this.getFeatureList("LunarII");
-		Collections.sort(tmp, new L2Comparator());
+		Collections.sort(tmp, new FeatureComparator());
 		return tmp;
 	}
 	

@@ -23,8 +23,13 @@ import android.widget.Toast;
  *
  */
 public class LunarTwoFeaturesActivity extends ListActivity {
+	/** Logging identifier. */
 	private final static String TAG = "LunarTwoFeaturesActivity";
 	
+	/**
+	 * This function does the actual view creation. It also sets up a long 
+	 * click listener to show more information about the feature.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG, "Creating tab.");

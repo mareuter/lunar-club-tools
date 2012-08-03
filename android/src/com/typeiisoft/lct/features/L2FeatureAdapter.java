@@ -3,9 +3,7 @@ package com.typeiisoft.lct.features;
 import java.util.ArrayList;
 
 import com.typeiisoft.lct.R;
-import com.typeiisoft.lct.utils.StrFormat;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,17 +12,34 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * This class handles creating the list view for the Lunar II feature list.
+ * 
+ * @author Michael Reuter
+ *
+ */
 public class L2FeatureAdapter extends ArrayAdapter<LunarFeature> {
+	/** Associated activity context. */
 	private final Context context;
+	/** Holder for the list of features. */
 	private final ArrayList<LunarFeature> features;
+	/** Logging indentifier. */
 	private static final String TAG = "L2FeatureAdapter";
 	
-	public L2FeatureAdapter(Activity context, ArrayList<LunarFeature> values) {
+	/**
+	 * This function is the class constructor.
+	 * @param context : The current activity context.
+	 * @param values : The list of currently visible Lunar II features.
+	 */
+	public L2FeatureAdapter(Context context, ArrayList<LunarFeature> values) {
 		super(context, R.layout.l2featureitem, values);
 		this.context = context;
 		this.features = values;
 	}
 	
+	/**
+	 * This function creates the item view for the list view.
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " starting.");
@@ -35,14 +50,7 @@ public class L2FeatureAdapter extends ArrayAdapter<LunarFeature> {
 		
 		TextView featureNameView = (TextView) rowView.findViewById(R.id.feature_name);
 		featureNameView.setText(this.features.get(position).getName());
-		/**
-		TextView featureTypeView = (TextView) rowView.findViewById(R.id.feature_type);
-		featureTypeView.setText(this.features.get(position).getFeatureType());
-		
-		TextView featureLatView = (TextView) rowView.findViewById(R.id.feature_latitude);
-		String lat = StrFormat.coordFormat("lat", this.features.get(position).getLatitude());
-		featureLatView.setText(lat);
-		*/
+
 		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " done.");
 		return rowView;
 	}

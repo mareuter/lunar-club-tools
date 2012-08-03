@@ -3,24 +3,30 @@ package com.typeiisoft.lct.features;
 import java.util.ArrayList;
 
 import com.typeiisoft.lct.R;
-import com.typeiisoft.lct.utils.StrFormat;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 public class LcFeatureAdapter extends BaseExpandableListAdapter {
+	/** Holder for current activity context. */
 	private final Context context;
+	/** Holder for group headers. */
 	private final ArrayList<String> headers;
+	/** Holder for features list. */
 	private final ArrayList<ArrayList<LunarFeature>> features;
+	/** Logging identifier. */
 	private static final String TAG = "LcFeatureAdapter";
 	
+	/**
+	 * This function is the class constructor.
+	 * @param context : The current activity context.
+	 * @param hvals : The list of group headers.
+	 * @param values : The list of lists of features.
+	 */
 	public LcFeatureAdapter(Context context, ArrayList<String> hvals,
 			ArrayList<ArrayList<LunarFeature>> values) {
 		//super(context, R.layout.lcfeatureitem, values);
@@ -59,31 +65,7 @@ public class LcFeatureAdapter extends BaseExpandableListAdapter {
         tv.setText(header);
         return convertView;
     }
-/*
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " starting.");
 
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.lcfeatureitem, parent, false);
-		TextView featureNameView = (TextView) rowView.findViewById(R.id.feature_name);
-		featureNameView.setText(this.features.get(position).getName());
-		
-		TextView featureTypeView = (TextView) rowView.findViewById(R.id.feature_type);
-		featureTypeView.setText(this.features.get(position).getFeatureType());
-		
-		TextView featureTargetView = (TextView) rowView.findViewById(R.id.club_target_type);
-		featureTargetView.setText(this.features.get(position).getClubType());
-		
-		TextView featureLatView = (TextView) rowView.findViewById(R.id.feature_latitude);
-		String lat = StrFormat.coordFormat("lat", this.features.get(position).getLatitude());
-		featureLatView.setText(lat);
-		
-		Log.d(TAG, "RowView for " + this.features.get(position).getName() + " done.");
-		return rowView;
-	}
-*/
     @Override
     public boolean areAllItemsEnabled()
     {

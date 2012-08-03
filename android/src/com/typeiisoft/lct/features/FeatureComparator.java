@@ -3,8 +3,7 @@ package com.typeiisoft.lct.features;
 import java.util.Comparator;
 
 /**
- * This class is responsible for the sorting criteria for the Lunar II feature 
- * list.
+ * This class is responsible for the sorting criteria for all feature lists.
  * 
  * @author Michael Reuter
  *

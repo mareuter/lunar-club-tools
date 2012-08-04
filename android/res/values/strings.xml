@@ -4,7 +4,7 @@
     <string name="date_label_text">Current Date:</string>
     <string name="time_label_text">Current Time:</string>
     <string name="moon_age_text">Moon Age:</string>
-    <string name="moon_illum_text">Moon Illimination:</string>
+    <string name="moon_illum_text">Moon Illumination:</string>
     <string name="moon_colong_text">Moon Colongitude:</string>
     <string name="about_label">About</string>
     <string name="about_shortcut">a</string>

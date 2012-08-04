@@ -8,6 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/date_label_text"
+        android:textSize="20sp"
         android:paddingTop="5dip"
         android:paddingBottom="5dip" />
     <TextView
@@ -15,6 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/time_label_text"
+        android:textSize="20sp"
         android:paddingTop="5dip"
         android:paddingBottom="5dip" />
     <TextView
@@ -22,6 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/moon_age_text"
+        android:textSize="20sp"
         android:paddingTop="5dip"
         android:paddingBottom="5dip" />
     <TextView
@@ -29,6 +32,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/moon_illum_text"
+        android:textSize="20sp"
         android:paddingTop="5dip"
         android:paddingBottom="5dip" />
     <TextView
@@ -36,6 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/moon_colong_text"
+        android:textSize="20sp"
         android:paddingTop="5dip"
         android:paddingBottom="5dip" />
 </LinearLayout>

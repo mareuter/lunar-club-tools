@@ -8,20 +8,7 @@
         android:id="@+id/feature_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="15sp" />
-    <!--  
-    <TextView
-        android:id="@+id/feature_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_toRightOf="@id/feature_name"
-        android:textSize="10dp"
-        android:paddingRight="15sp" />
-    <TextView
-        android:id="@+id/feature_latitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:layout_toRightOf="@id/feature_type" />        
-    -->
+        android:paddingRight="15sp"
+        android:textSize="20sp" />
+
 </RelativeLayout>

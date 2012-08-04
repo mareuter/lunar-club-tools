@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
@@ -40,17 +41,16 @@ public class LunarTwoFeaturesActivity extends ListActivity {
         		(ArrayList<LunarFeature>) moonDB.getLunarTwoFeatures());
         setListAdapter(adapter);
         
-        // Setup the long click listener to display more information
-        OnItemLongClickListener listener = new OnItemLongClickListener() {
+        // Setup the click listener to display more information
+        OnItemClickListener listener = new OnItemClickListener() {
 			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
+			public void onItemClick(AdapterView<?> parent, View view, 
 					int position, long id) {
 				String text = parent.getItemAtPosition(position).toString();
 				Toast.makeText(LunarTwoFeaturesActivity.this, text, 
 						Toast.LENGTH_LONG).show();
-				return true;
 			}
 		};
-		this.getListView().setOnItemLongClickListener(listener);
+		this.getListView().setOnItemClickListener(listener);
 	}
 }

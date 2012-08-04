@@ -252,11 +252,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 */
 	private LunarFeature cursorToLunarFeature(Cursor cur) {
 		return new LunarFeature(cur.getString(DbFields.NAME.ordinal()), 
+				cur.getDouble(DbFields.DIAMETER.ordinal()),
 				cur.getDouble(DbFields.LATITUDE.ordinal()), 
 				cur.getDouble(DbFields.LONGITUDE.ordinal()), 
 				cur.getString(DbFields.TYPE.ordinal()), 
 				cur.getDouble(DbFields.DELTA_LAT.ordinal()), 
-				cur.getDouble(DbFields.DELTA_LONG.ordinal()), 
+				cur.getDouble(DbFields.DELTA_LONG.ordinal()),
+				cur.getString(DbFields.QUAD_NAME.ordinal()),
+				cur.getString(DbFields.QUAD_CODE.ordinal()),
 				cur.getString(DbFields.LUNAR_CODE.ordinal()),
 				cur.getString(DbFields.LUNAR_CLUB_TYPE.ordinal()));
 	}

@@ -12,6 +12,8 @@ import com.typeiisoft.lct.utils.StrFormat;
 public class LunarFeature {
 	/** Clean name of the lunar feature (no dicritical marks). */
 	private String name;
+	/** Diameter or longest axis of lunar feature. */
+	private double diameter;
 	/** Latitude of the lunar feature in decimal degrees. North is positive. */
 	private double latitude;
 	/** Longitude of the lunar feature in decimal degrees. East is positive. */
@@ -22,6 +24,14 @@ public class LunarFeature {
 	private double deltaLatitude;
 	/** Width of the lunar feature in longitude in decimal degrees. */
 	private double deltaLongitude;
+	/** Name of lunar quadrant containing feature's center point as determined 
+	 * by the International Astronomical Union (IAU) Working Group for 
+	 * Planetary System Nomenclature (WGPSN) */
+	private String quadName;
+	/** Specific lunar quadrant containing feature's center point as determined 
+	 * by the IAU WGPSN. 
+	 */
+	private String quadCode;
 	/** Observing club lunar feature belongs to. */	
 	private String codeName;
 	/** Target type name for Lunar Club */
@@ -35,18 +45,24 @@ public class LunarFeature {
 	 * @param featureType : description of feature
 	 * @param deltaLatitude : latitude width of feature
 	 * @param deltaLongitude : longitude width of feature
+	 * @param quadName : lunar quadrant name
+	 * @param quadCode : lunar quadrant code
 	 * @param codeName : Club list for feature
 	 * @param clubType : Lunar Club target type
 	 */
-	public LunarFeature(String name, double latitude, double longitude,
+	public LunarFeature(String name, double diameter, double latitude, double longitude,
 			String featureType, double deltaLatitude, double deltaLongitude,
-			String codeName, String clubType) {
+			String quadName, String quadCode, String codeName, 
+			String clubType) {
 		this.name = name;
+		this.diameter = diameter;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.featureType = featureType;
 		this.deltaLatitude = deltaLatitude;
 		this.deltaLongitude = deltaLongitude;
+		this.quadName = quadName;
+		this.quadCode = quadCode;
 		this.codeName = codeName;
 		this.clubType = clubType;
 	}
@@ -59,6 +75,13 @@ public class LunarFeature {
 		return this.name;
 	}
 	
+	/**
+	 * Getter for feature diameter
+	 * @return : the feature diameter
+	 */
+	public double getDiameter() {
+		return this.diameter;
+	}
 	/**
 	 * Getter for feature latitude
 	 * @return : the feature latitude
@@ -100,6 +123,22 @@ public class LunarFeature {
 	}
 	
 	/**
+	 * Getter for the lunar feature quadrant name
+	 * @return : the feature's quadrant name
+	 */
+	public String getQuadName() {
+		return this.quadName;
+	}
+	
+	/**
+	 * Getter for the lunar feautre quadrant code 
+	 * @return : the feature's quadrant code
+	 */
+	public String getQuadCode() {
+		return this.quadCode;
+	}
+	
+	/**
 	 * Getter for the observing club list name. Can be Lunar, LunarII or Both
 	 * @return : the observing cub list name
 	 */
@@ -120,13 +159,18 @@ public class LunarFeature {
 	 * @return : The feature's string representation.
 	 */
 	public String toString() {
+		String lsp = System.getProperty("line.separator");
 		StringBuilder stb = new StringBuilder();
-		stb.append("Name: ").append(this.name).append("\n")
-		.append("Type: ").append(this.featureType).append("\n")
+		stb.append("Name: ").append(this.name).append(lsp)
+		.append("Type: ").append(this.featureType).append(lsp)
 		.append("Latitude: ").append(StrFormat.coordFormat("lat", 
-				this.latitude)).append("\n")
+				this.latitude)).append(lsp)
 		.append("Longitude: ").append(StrFormat.coordFormat("lon", 
-				this.longitude)).append("\n");
+				this.longitude)).append(lsp)
+		.append("Diameter: ").append(StrFormat.formatDouble(this.diameter, 2))
+		.append(" km").append(lsp)
+		.append("Quad Name: ").append(this.quadName).append(lsp)
+		.append("Quad Code: ").append(this.quadCode).append(lsp);
 		return stb.toString();
 	}
 }

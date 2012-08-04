@@ -7,6 +7,7 @@ import com.mhuss.AstroLib.Astro;
 /**
  * This class is designed to provide various string formatting methods. It 
  * should only be used via the static methods as instantiation is not allowed.
+ * 
  * @author Michael Reuter
  *
  */
@@ -14,13 +15,13 @@ public final class StrFormat {
 	
 	/** Constant for the unicode degree symbol. */
 	public static final String DEGREE_SYMBOL = "\u00b0";
-	/** Constanst for logging. */
+	/** Constant for logging. */
 	public static final String TAG = "StrFormat";
 	
 	/**
 	 * This function formats a latitude or longitude value into one with 
 	 * a direction label and two numbers after the decimal.
-	 * @param coordType : The coord type: lat/lon.
+	 * @param coordType : The coordinate type: lat/lon.
 	 * @param coord : The value of the latitude or longitude.
 	 * @return : A formatted string.
 	 */

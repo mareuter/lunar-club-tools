@@ -220,7 +220,7 @@ public class MoonInfo {
 	 */
 	private void getColongitude() {
 		if (Double.MAX_VALUE == this.colongitude) {
-			this.colongitude = LunarCalc.selenographicColongitude(this.getJulianCenturies());
+			this.colongitude = LunarCalc.colongitude(this.getJulianCenturies());
 		}
 	}
 	

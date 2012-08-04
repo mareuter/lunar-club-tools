@@ -11,7 +11,10 @@
     <string name="about_title">About Lunar Club Tools</string>
     <string name="about_text">\
         <p>Lunar Club Tools is a program for determining what lunar features 
-        are visible based on the current selenographic colongitude.</p>
+        are visible based on the current selenographic colongitude. The 
+        features are taken from the observing lists of the Lunar and Lunar II 
+        clubs from The Astronomical League (http://www.astroleague.org). 
+        For more information on this program see .</p>
     </string>
     <string name="empty">No features currently visible!</string>
 </resources>

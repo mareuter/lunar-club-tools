@@ -22,7 +22,15 @@
             android:name=".MoonInfoActivity">
         </activity>
         <activity
-            android:name=".FeaturesActivity">
+            android:name=".LunarClubFeaturesActivity">
+        </activity>
+                <activity
+            android:name=".LunarTwoFeaturesActivity">
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/about_title"
+            android:theme="@android:style/Theme.Dialog">
         </activity>
     </application>
 

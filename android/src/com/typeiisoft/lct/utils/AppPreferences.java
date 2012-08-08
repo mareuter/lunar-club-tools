@@ -36,22 +36,24 @@ public class AppPreferences {
 	 * @param hours : The observation hour of day.
 	 * @param minutes : The observation minutes of hour.
 	 * @param seconds : The observation seconds of minute.
+	 * @param offset : The time in hours from UTC.
 	 */
 	public void setDateTime(int day, int month, int year, int hours, 
-			int minutes, int seconds) {
+			int minutes, int seconds, int offset) {
 		this.prefsEditor.putInt("obsdate_day", day);
 		this.prefsEditor.putInt("obsdate_month", month);
 		this.prefsEditor.putInt("obsdate_year", year);
 		this.prefsEditor.putInt("obsdate_hours", hours);
 		this.prefsEditor.putInt("obsdate_minutes", minutes);
 		this.prefsEditor.putInt("obsdate_seconds", seconds);
+		this.prefsEditor.putInt("obsdate_offset", offset);
 		this.prefsEditor.commit();
 	}
 	
 	/**
 	 * This function gathers the currently held observation date and time into 
 	 * an array. The order of the array is: (day_of_month, month, year, hours,
-	 * minutes, seconds).
+	 * minutes, seconds, utc_offset).
 	 * @return : The currently held observation date and time.
 	 */
 	public int[] getDateTime() {
@@ -60,7 +62,8 @@ public class AppPreferences {
 				this.sharedPrefs.getInt("obsdate_year", 2012),
 				this.sharedPrefs.getInt("obsdate_hours", 20),
 				this.sharedPrefs.getInt("obsdate_minutes", 0),
-				this.sharedPrefs.getInt("obsdate_seconds", 0)};
+				this.sharedPrefs.getInt("obsdate_seconds", 0),
+				this.sharedPrefs.getInt("obsdate_offset", 0)};
 		return currDateTime;
 	}
 }

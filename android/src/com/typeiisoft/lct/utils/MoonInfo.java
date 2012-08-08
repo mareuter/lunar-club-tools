@@ -1,6 +1,11 @@
 package com.typeiisoft.lct.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 import android.util.Log;
 
 import com.mhuss.AstroLib.Astro;
@@ -9,6 +14,8 @@ import com.mhuss.AstroLib.Lunar;
 import com.mhuss.AstroLib.LunarCalc;
 import com.mhuss.AstroLib.NoInitException;
 import com.mhuss.AstroLib.ObsInfo;
+import com.mhuss.AstroLib.TimeOps;
+
 import com.typeiisoft.lct.features.LunarFeature;
 
 /**
@@ -21,8 +28,10 @@ import com.typeiisoft.lct.features.LunarFeature;
 public class MoonInfo {
 	/** Logging tag. */
 	private static final String TAG = "MoonInfo";
-	/** The current date and time for all observation information. */
+	/** The current date and time in UTC for all observation information. */
 	private AstroDate obsDate;
+	/** The current date and time in the local timezone. */
+	private Calendar obsLocal;
 	/** Object that does most of the calculations. */
 	private Lunar lunar;
 	/** Object that holds the observing site information. */
@@ -52,6 +61,9 @@ public class MoonInfo {
 	 */
 	public MoonInfo() {
 		Calendar now = Calendar.getInstance();
+		this.obsLocal = (Calendar)now.clone();
+		int offset = now.getTimeZone().getOffset(now.getTimeInMillis()) / Astro.MILLISECONDS_PER_HOUR;
+		now.add(Calendar.HOUR_OF_DAY, -offset);
 		this.obsDate = new AstroDate(now.get(Calendar.DATE), 
 				now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
 				now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
@@ -61,11 +73,13 @@ public class MoonInfo {
 	
 	/**
 	 * This function is the parametered class constructor.
-	 * @param datetime : Array of six values of the current date and time.
+	 * @param datetime : Array of seven values of the current date and time.
 	 */
 	public MoonInfo(int[] datetime) {
 		this.obsDate = new AstroDate(datetime[0], datetime[1], datetime[2],
 				datetime[3], datetime[4], datetime[5]);
+		this.obsLocal = this.obsDate.toGCalendar();
+		this.obsLocal.add(Calendar.HOUR_OF_DAY, datetime[6]);
 		this.initialize();
 	}
 	
@@ -127,13 +141,30 @@ public class MoonInfo {
 	}
 	
 	/**
-	 * This function returns the currently held observation date and time 
-	 * as separate strings.
-	 * @return : A date string and a time string.
+	 * This function returns the currently held local representation of the 
+	 * observation date and time as separate strings.
+	 * @return : A date string and a time string in the local timezone.
 	 */
-	public String[] obsDateTime() {
-		return this.obsDate.toStringTZ().split(" ", 2);
+	public String[] obsLocalTime() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		StringBuffer buf = new StringBuffer(format.format(this.obsLocal.getTime()));
+		String tz = this.obsLocal.getTimeZone().getDisplayName(TimeOps.dstOffset(this.obsLocal) != 0, 
+				TimeZone.SHORT);
+		buf.append(" ").append(tz);
+		return buf.toString().split(" ", 2);
 	}
+
+	/**
+	 * This function returns the currently held UTC representation of the 
+	 * observation date and time as separate strings. 
+	 * @return : A date string and a time string in the UTC timezone.
+	 */
+	public String[] obsUtcTime() {
+		StringBuffer buf = new StringBuffer(this.obsDate.toMinString());
+		buf.append(" UTC");
+		return buf.toString().split(" ", 2);
+	}
+
 	
 	/**
 	 * This function returns the selenographic colongitude for the current 
@@ -319,7 +350,7 @@ public class MoonInfo {
 	 */
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
-		String[] tmp = this.obsDateTime();
+		String[] tmp = this.obsLocalTime();
 		buf.append("Date: ").append(tmp[0]).append(System.getProperty("line.separator"));
 		buf.append("Time: ").append(tmp[1]).append(System.getProperty("line.separator"));
 		buf.append("Julian Date: ").append(Double.toString(this.obsDate.jd()));

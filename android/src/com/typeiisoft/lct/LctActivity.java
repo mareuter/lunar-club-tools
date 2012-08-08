@@ -3,6 +3,7 @@ package com.typeiisoft.lct;
 import java.io.IOException;
 import java.util.Calendar;
 
+import com.mhuss.AstroLib.Astro;
 import com.typeiisoft.lct.db.DataBaseHelper;
 import com.typeiisoft.lct.utils.AppPreferences;
 
@@ -17,8 +18,9 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 
 public class LctActivity extends TabActivity {
-	/** The application prefences object. */
+	/** The application preferences object. */
 	private AppPreferences appPrefs;
+	private static final String TAG = "LctActivity";
 	
     /** Called when the activity is first created. */
     @Override
@@ -33,11 +35,14 @@ public class LctActivity extends TabActivity {
 
         // Set the observation date and time into the shared preferences.
     	this.appPrefs = new AppPreferences(this.getApplicationContext());
-		Calendar now = Calendar.getInstance();
+    	Calendar now = Calendar.getInstance();
+    	int offset = now.getTimeZone().getOffset(now.getTimeInMillis()) / Astro.MILLISECONDS_PER_HOUR;
+		// Set time to UTC, offset will allow calc of local time later.
+		now.add(Calendar.HOUR_OF_DAY, -offset);
 		this.appPrefs.setDateTime(now.get(Calendar.DATE), 
 				now.get(Calendar.MONTH)+1, now.get(Calendar.YEAR), 
 				now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), 
-				now.get(Calendar.SECOND));
+				now.get(Calendar.SECOND), offset);
 
         // Copy the Moon information database
         DataBaseHelper moonDB = new DataBaseHelper(this);

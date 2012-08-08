@@ -32,9 +32,9 @@ public class MoonInfoActivity extends Activity {
 		this.appPrefs = new AppPreferences(this.getApplicationContext());
 		
 		MoonInfo moonInfo = new MoonInfo(appPrefs.getDateTime());
-		Log.i(TAG, "MoonInfo: " + moonInfo.toString());
+		Log.w(TAG, "MoonInfo: " + moonInfo.toString());
 		
-		String[] dateTime = moonInfo.obsDateTime();
+		String[] dateTime = moonInfo.obsLocalTime();
 		this.appendText(R.id.obsdate_label, dateTime[0]);
 		this.appendText(R.id.obstime_label, dateTime[1]);
 		this.appendText(R.id.moon_age_label, moonInfo.age());

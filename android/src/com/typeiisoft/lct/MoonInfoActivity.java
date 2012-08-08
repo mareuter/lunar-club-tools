@@ -37,6 +37,7 @@ public class MoonInfoActivity extends Activity {
 		String[] dateTime = moonInfo.obsLocalTime();
 		this.appendText(R.id.obsdate_label, dateTime[0]);
 		this.appendText(R.id.obstime_label, dateTime[1]);
+		this.appendText(R.id.moon_phase_label, moonInfo.phase());
 		this.appendText(R.id.moon_age_label, moonInfo.age());
 		this.appendText(R.id.moon_illum_label, moonInfo.illumation());
 		this.appendText(R.id.moon_colong_label, moonInfo.colong());

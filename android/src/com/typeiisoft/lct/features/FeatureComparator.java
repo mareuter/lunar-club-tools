@@ -17,7 +17,7 @@ public class FeatureComparator implements Comparator<LunarFeature> {
 			return value;
 		}
 		else {
-			return Double.compare(arg0.getLatitude(), arg1.getLatitude());
+			return -1 * Double.compare(arg0.getLatitude(), arg1.getLatitude());
 		}
 	}
 

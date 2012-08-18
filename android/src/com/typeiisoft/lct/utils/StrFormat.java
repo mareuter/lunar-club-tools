@@ -59,7 +59,7 @@ public final class StrFormat {
 	 * @return : A formatted string.
 	 */
 	public static String formatDouble(double value, int precision) {
-		StringBuffer buf = new StringBuffer(".");
+		StringBuffer buf = new StringBuffer("0.");
 		for (int i = 0; i < precision; i++) {
 			buf.append("#");
 		}
